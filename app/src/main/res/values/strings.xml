@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">PassManagerKotlin</string>
+    <string name="pref_name">PassManagerPreference</string>
+
+    <string name="submit">登録</string>
+    <string name="login">ログイン</string>
+    <string name="password">パスワード</string>
+    <string name="passwordConf">パスワード(確認)</string>
+
+
+
+    <string name="pref_appPassword">pref_appPassword</string>
+
+
+    <string name="error_required">%sを入力してね</string>
+    <string name="error_passwordCreateFailed">パスワードの生成に失敗しました。</string>
+    <string name="error_cannot_login">ログインできなかったよ</string>
+    <string name="error_notEquals" formatted="false">%sと%sが一致しません</string>
+</resources>
