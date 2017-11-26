@@ -1,4 +1,4 @@
-package com.yoidukigembu.passmanager.utils
+package com.yoidukigembu.passmanagerkt.util
 
 import com.yoidukigembu.passmanagerkt.PMApplication
 
