@@ -38,6 +38,7 @@ class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentP
     }
 
     override fun onPasswordCreated() {
+        Toast.makeText(context, R.string.app_password_is_registered, Toast.LENGTH_SHORT).show()
         operator?.showLogin()
     }
 

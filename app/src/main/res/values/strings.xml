@@ -9,6 +9,7 @@
 
     <string name="app_password_registration">アプリ用パスワード登録</string>
 
+    <string name="app_password_is_registered">アプリ用パスワードが登録されました！</string>
 
     <string name="pref_appPassword">pref_appPassword</string>
 

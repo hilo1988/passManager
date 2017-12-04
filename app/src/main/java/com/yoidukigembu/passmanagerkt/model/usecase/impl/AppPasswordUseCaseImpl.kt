@@ -5,6 +5,7 @@ import android.content.Context
 import com.yoidukigembu.passmanagerkt.PMApplication
 import com.yoidukigembu.passmanagerkt.model.usecase.AppPasswordUseCase
 import com.yoidukigembu.passmanagerkt.util.Logger
+import org.apache.commons.codec.binary.Hex
 import org.apache.commons.codec.digest.DigestUtils
 import org.apache.commons.lang3.RandomStringUtils
 import java.io.IOException
@@ -15,11 +16,15 @@ import java.nio.charset.Charset
  */
 class AppPasswordUseCaseImpl : AppPasswordUseCase {
 
+    /**
+     * アプリパスワードの保存/変更
+     * @param password アプリパスワード
+     */
     override fun save(password: String): Boolean {
         try {
             PMApplication.getContext().openFileOutput(PASS_FILE_NAME, Context.MODE_PRIVATE)
                     .writer(Charset.defaultCharset())
-                    .write(DigestUtils.sha512Hex(getSalt() + password))
+                    .write(salt(password))
             Logger.d("アプリパスワードの保存に成功しました。")
         } catch (e: IOException) {
             Logger.e(e, "アプリパスワードの保存に失敗しました")
@@ -33,6 +38,13 @@ class AppPasswordUseCaseImpl : AppPasswordUseCase {
     override fun existsAppPassword() = PMApplication.getContext().getFileStreamPath(PASS_FILE_NAME)
             .exists()
 
+
+    /**
+     * パスワードをソルト化
+     * @param str ソルトする文字列
+     * @return ソルト化した文字列
+     */
+    private fun salt(str:String) = String(Hex.encodeHex(DigestUtils.sha512(getSalt() + str)))
 
     /**
      * ソルトの取得
@@ -50,7 +62,7 @@ class AppPasswordUseCaseImpl : AppPasswordUseCase {
     }
 
     override fun isSamePassword(password: String): Boolean {
-        val inputPass = DigestUtils.sha512Hex(getSalt() + password)
+        val inputPass = salt(password)
         val savedPass = PMApplication.getContext()
                 .openFileInput(PASS_FILE_NAME)
                 .reader(Charset.defaultCharset())
