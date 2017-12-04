@@ -9,6 +9,7 @@ import com.yoidukigembu.passmanagerkt.R
 import com.yoidukigembu.passmanagerkt.presenter.AppPasswordPresenter
 import com.yoidukigembu.passmanagerkt.presenter.PresenterFactory
 import kotlinx.android.synthetic.main.fragment_app_password.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentProcessor {
 
@@ -30,6 +31,10 @@ class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentP
                     passwordEdit.text.toString(),
                     passwordConfEdit.text.toString())
         }
+
+        myToolbar.setTitle(R.string.app_password_registration)
+        activity.setActionBar(myToolbar)
+
     }
 
     override fun onPasswordCreated() {
