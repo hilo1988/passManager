@@ -10,4 +10,9 @@
     <dimen name="marginMiddle">12dp</dimen>
     <dimen name="marginLong">32dp</dimen>
 
+
+    <dimen name="edit_text_border_stroke">1dp</dimen>
+    <dimen name="edit_text_border_padding">4dp</dimen>
+    <dimen name="edit_text_border_radius">8dp</dimen>
+
 </resources>

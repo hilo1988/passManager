@@ -1,0 +1,12 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF" />
+    <stroke
+        android:width="@dimen/edit_text_border_stroke"
+        android:color="@color/textBorder" />
+    <padding
+        android:bottom="@dimen/edit_text_border_padding"
+        android:left="@dimen/edit_text_border_padding"
+        android:right="@dimen/edit_text_border_padding"
+        android:top="@dimen/edit_text_border_padding" />
+    <corners android:radius="@dimen/edit_text_border_radius" />
+</shape>

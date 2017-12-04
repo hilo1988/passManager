@@ -6,9 +6,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:editTextStyle">@style/EditTextStyle</item>
     </style>
 
-    <style name="editText">
+    <style name="EditTextStyle">
+        <item name="android:background">@drawable/border_edittext</item>
     </style>
 
 </resources>
