@@ -35,6 +35,8 @@ class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentP
         myToolbar.setTitle(R.string.app_password_registration)
         activity.setActionBar(myToolbar)
 
+        submitButton.setText(R.string.submit)
+
     }
 
     override fun onPasswordCreated() {
