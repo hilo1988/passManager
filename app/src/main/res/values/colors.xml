@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="textBorder">#3F51B5</color>
+
+    <color name="black">#000000</color>
+    <color name="gray">#787878</color>
 </resources>
