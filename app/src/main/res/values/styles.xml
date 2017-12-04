@@ -10,7 +10,9 @@
         <item name="android:editTextStyle">@style/EditTextStyle</item>
     </style>
 
-    <style name="EditTextStyle">
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/gray</item>
         <item name="android:background">@drawable/border_edittext</item>
     </style>
 
