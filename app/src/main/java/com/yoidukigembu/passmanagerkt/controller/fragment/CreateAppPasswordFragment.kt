@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.yoidukigembu.passmanagerkt.R
 import com.yoidukigembu.passmanagerkt.presenter.AppPasswordPresenter
 import com.yoidukigembu.passmanagerkt.presenter.PresenterFactory
+import kotlinx.android.synthetic.main.fragment_app_password.*
 
 class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentProcessor {
 
@@ -18,12 +19,17 @@ class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentP
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val v = inflater?.inflate(R.layout.fragment_app_password, null)
 
-//        submitButton.setOnClickListener { v ->
-//            presenter.createPassword(
-//                    passwordEdit.text.toString(),
-//                    passwordConfEdit.text.toString())
-//        }
+
         return v!!
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        submitButton.setOnClickListener { v ->
+            presenter.createPassword(
+                    passwordEdit.text.toString(),
+                    passwordConfEdit.text.toString())
+        }
     }
 
     override fun onPasswordCreated() {

@@ -16,7 +16,7 @@ class LoginActivity : BaseActivity(), LoginFragment.ActivityOperator, CreateAppP
         setContentView(R.layout.activity_login)
 
         val fragment =
-                if (passwordUseCase.existsAppPassword())
+                if (!passwordUseCase.existsAppPassword())
                     CreateAppPasswordFragment.getInstance(this)
                 else
                     LoginFragment.getInstance(this)

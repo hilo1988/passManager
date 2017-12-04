@@ -7,7 +7,6 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.ContextMenu
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import com.yoidukigembu.passmanagerkt.util.Logger
 
@@ -26,15 +25,6 @@ open class BaseFragment : Fragment() {
         Logger.v()
     }
 
-    override fun onContextItemSelected(item: MenuItem?): Boolean {
-        Logger.v()
-        return super.onContextItemSelected(item)
-    }
-
-    override fun getView(): View {
-        Logger.v()
-        return super.getView()
-    }
 
     override fun onDetach() {
         super.onDetach()
