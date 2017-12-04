@@ -6,6 +6,7 @@ import com.yoidukigembu.passmanagerkt.R
 import com.yoidukigembu.passmanagerkt.controller.fragment.CreateAppPasswordFragment
 import com.yoidukigembu.passmanagerkt.controller.fragment.LoginFragment
 import com.yoidukigembu.passmanagerkt.model.usecase.impl.AppPasswordUseCaseImpl
+import com.yoidukigembu.passmanagerkt.util.Logger
 
 class LoginActivity : BaseActivity(), LoginFragment.ActivityOperator, CreateAppPasswordFragment.ActivityOperator {
 
@@ -33,6 +34,7 @@ class LoginActivity : BaseActivity(), LoginFragment.ActivityOperator, CreateAppP
     }
 
     override fun onLogin() {
+        Logger.v()
 //        startActivity(Intent(this, PasswordListActivity::class.java))
     }
 }

@@ -22,9 +22,11 @@ class AppPasswordUseCaseImpl : AppPasswordUseCase {
      */
     override fun save(password: String): Boolean {
         try {
-            PMApplication.getContext().openFileOutput(PASS_FILE_NAME, Context.MODE_PRIVATE)
+            val salt = salt(password)
+            val writer = PMApplication.getContext().openFileOutput(PASS_FILE_NAME, Context.MODE_PRIVATE)
                     .writer(Charset.defaultCharset())
-                    .write(salt(password))
+            writer.write(salt)
+            writer.flush()
             Logger.d("アプリパスワードの保存に成功しました。")
         } catch (e: IOException) {
             Logger.e(e, "アプリパスワードの保存に失敗しました")
@@ -54,9 +56,10 @@ class AppPasswordUseCaseImpl : AppPasswordUseCase {
             return PMApplication.getContext().openFileInput(SALT).reader(Charset.defaultCharset()).readText()
         } catch (e: IOException) {
             val salt = RandomStringUtils.randomAlphanumeric(10)
-            PMApplication.getContext().openFileOutput(SALT, Context.MODE_PRIVATE)
+            val writer = PMApplication.getContext().openFileOutput(SALT, Context.MODE_PRIVATE)
                     .writer(Charset.defaultCharset())
-                    .write(salt)
+            writer.write(salt)
+            writer.flush()
             return salt
         }
     }
@@ -67,6 +70,8 @@ class AppPasswordUseCaseImpl : AppPasswordUseCase {
                 .openFileInput(PASS_FILE_NAME)
                 .reader(Charset.defaultCharset())
                 .readText()
+
+        Logger.v("input:[%s] saved:[%s]", inputPass, savedPass)
 
         return inputPass == savedPass
     }

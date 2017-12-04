@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.yoidukigembu.passmanagerkt.R
 import com.yoidukigembu.passmanagerkt.presenter.LoginPresenter
+import com.yoidukigembu.passmanagerkt.presenter.PresenterFactory
 import kotlinx.android.synthetic.main.fragment_app_password.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 /**
  * ログインフラグメント
@@ -15,6 +17,8 @@ import kotlinx.android.synthetic.main.fragment_app_password.*
 class LoginFragment : BaseFragment(), LoginPresenter.FragmentProcessor {
 
     private var operator : ActivityOperator? = null
+
+    private val presenter = PresenterFactory.getLoginPresenter(this)
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -26,13 +30,17 @@ class LoginFragment : BaseFragment(), LoginPresenter.FragmentProcessor {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        submitButton.setOnClickListener{v -> onClickSubmitButton(v)}
+        submitButton.setOnClickListener{_ -> onClickSubmitButton()}
         passwordConfEdit.visibility = View.GONE
+
+        myToolbar.setTitle(R.string.login)
+        activity.setActionBar(myToolbar)
     }
 
 
-    private fun onClickSubmitButton(v : View?) {
-        passwordEdit.text.toString()
+    private fun onClickSubmitButton() {
+        val password = passwordEdit.text.toString()
+        presenter.login(password)
     }
 
 
