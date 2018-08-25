@@ -26,9 +26,9 @@ class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentP
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        submitButton.setOnClickListener { v ->
+        submitButton.setOnClickListener { _ ->
             presenter.createPassword(
-                    passwordEdit.text.toString(),
+                    password1Edit.text.toString(),
                     passwordConfEdit.text.toString())
         }
 

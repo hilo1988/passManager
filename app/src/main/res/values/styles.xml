@@ -16,4 +16,16 @@
         <item name="android:background">@drawable/border_edittext</item>
     </style>
 
+    <style name="AppTheme.RaisedButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">#FFD464</item>
+        <item name="colorButtonNormal">#FBA848</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="RedCircle" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:background">@drawable/red_round</item>
+    </style>
+
 </resources>

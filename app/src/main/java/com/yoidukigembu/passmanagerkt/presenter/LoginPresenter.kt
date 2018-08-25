@@ -13,7 +13,7 @@ interface LoginPresenter {
     /**
      * フラグメント処理のI/F
      */
-    interface FragmentProcessor {
+    interface FragmentProcessor : BasePresenter.BaseFragmentProcessor {
 
         /**
          * ログインに成功した時の処理

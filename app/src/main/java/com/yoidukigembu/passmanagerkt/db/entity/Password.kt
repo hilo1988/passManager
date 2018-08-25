@@ -10,7 +10,7 @@ import com.github.gfx.android.orma.annotation.Table
  * @author BALIUS
  */
 @Table("passwords")
-class Password {
+class Password : BaseEntity() {
 
 
     @Column("_id")

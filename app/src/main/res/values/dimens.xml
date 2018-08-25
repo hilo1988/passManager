@@ -15,4 +15,6 @@
     <dimen name="edit_text_border_padding">4dp</dimen>
     <dimen name="edit_text_border_radius">8dp</dimen>
 
+    <dimen name="round_radius">30dp</dimen>
+
 </resources>

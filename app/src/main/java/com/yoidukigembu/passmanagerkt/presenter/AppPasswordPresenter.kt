@@ -1,7 +1,5 @@
 package com.yoidukigembu.passmanagerkt.presenter
 
-import android.content.Context
-
 /**
  * アプリパスワード登録プロセサ
  */
@@ -10,9 +8,9 @@ interface AppPasswordPresenter {
     /**
      * パスワード登録
      */
-    fun createPassword(password:String, passwordConf:String)
+    fun createPassword(password: String, passwordConf: String)
 
-    interface FragmentProcessor {
+    interface FragmentProcessor : BasePresenter.BaseFragmentProcessor {
 
         /**
          * アプリ用パスワードが生成されたときのコールバック
@@ -24,14 +22,10 @@ interface AppPasswordPresenter {
          */
         fun onPasswordCreateFailure()
 
-        /**
-         * コンテキスト取得
-         */
-        fun getContext(): Context
 
         /**
          * エラーメッセージの表示
          */
-        fun showError(msg : String)
+        fun showError(msg: String)
     }
 }

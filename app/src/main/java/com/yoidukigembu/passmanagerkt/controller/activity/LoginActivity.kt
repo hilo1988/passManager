@@ -35,6 +35,6 @@ class LoginActivity : BaseActivity(), LoginFragment.ActivityOperator, CreateAppP
 
     override fun onLogin() {
         Logger.v()
-//        startActivity(Intent(this, PasswordListActivity::class.java))
+        startActivity(Intent(this, PasswordListActivity::class.java))
     }
 }
