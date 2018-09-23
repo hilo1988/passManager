@@ -23,4 +23,8 @@ class PasswordAdapter(context: Context, relation: Password_Relation) : OrmaListA
         return view;
 
     }
+
+    override fun getItemId(position: Int): Long {
+        return relation[position].id
+    }
 }

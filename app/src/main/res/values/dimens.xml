@@ -17,6 +17,7 @@
 
     <dimen name="round_radius">30dp</dimen>>
 
+    <dimen name="listHeight">60dp</dimen>
     <dimen name="dialogGeneratorLabelWidth">80dp</dimen>
 
 </resources>

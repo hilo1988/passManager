@@ -31,6 +31,7 @@ class PasswordListPresenterImpl(val processor: PasswordListPresenter.FragmentPro
     }
 
     override fun onListItemClicked(id: Long) {
+        Logger.d("id: %d", id)
         Single
                 .create(SingleOnSubscribe<Password> { e ->
                     val password = RepositoryHolder.passwordRepository.findById(id)
@@ -38,6 +39,7 @@ class PasswordListPresenterImpl(val processor: PasswordListPresenter.FragmentPro
                     e.onSuccess(password!!)
 
                 })
+//                .doOnError { Toast.makeText(processor.getContext(), "パスワードが見つかりません。", Toast.LENGTH_SHORT).show() }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { entity -> processor.showPasswordMenu(entity, PasswordMenu.createMenuDataList(entity)) }
