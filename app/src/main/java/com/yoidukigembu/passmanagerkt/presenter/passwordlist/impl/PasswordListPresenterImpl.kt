@@ -26,7 +26,7 @@ class PasswordListPresenterImpl(val processor: PasswordListPresenter.FragmentPro
         Single.create(SingleOnSubscribe<Password_Relation> { e -> e.onSuccess(RepositoryHolder.passwordRepository.getListCursor()) })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { relation -> processor.createAdapter(relation) }
+                .subscribe { relation -> processor.showPasswordList(relation) }
 
     }
 

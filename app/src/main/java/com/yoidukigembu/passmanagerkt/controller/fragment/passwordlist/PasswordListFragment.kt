@@ -48,7 +48,7 @@ class PasswordListFragment : BaseFragment(), PasswordListPresenter.FragmentProce
     }
 
 
-    override fun createAdapter(relation: Password_Relation) {
+    override fun showPasswordList(relation: Password_Relation) {
         adapter = PasswordAdapter(context, relation)
     }
 

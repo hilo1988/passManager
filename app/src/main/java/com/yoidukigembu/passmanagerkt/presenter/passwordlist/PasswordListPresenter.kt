@@ -35,7 +35,7 @@ interface PasswordListPresenter : BasePresenter {
         /**
          * アダプタの作成
          */
-        fun createAdapter(relation: Password_Relation)
+        fun showPasswordList(relation: Password_Relation)
 
         /**
          * パスワードメニューの作成
