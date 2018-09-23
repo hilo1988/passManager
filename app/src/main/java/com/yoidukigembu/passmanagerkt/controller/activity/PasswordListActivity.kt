@@ -1,12 +1,13 @@
 package com.yoidukigembu.passmanagerkt.controller.activity
 
+import android.content.Intent
 import android.os.Bundle
 import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.controller.fragment.passwordlist.AddFragment
+import com.yoidukigembu.passmanagerkt.controller.fragment.passwordinput.PasswordInputFragment
 import com.yoidukigembu.passmanagerkt.controller.fragment.passwordlist.PasswordListFragment
 
 class PasswordListActivity : BaseActivity(), PasswordListFragment.ActivityOperator,
-        AddFragment.ActivityOperator {
+        PasswordInputFragment.ActivityOperator {
 
     private val fragmentTag = "PasswordListActivity_container"
 
@@ -22,9 +23,8 @@ class PasswordListActivity : BaseActivity(), PasswordListFragment.ActivityOperat
 
 
     override fun showAddFragment() {
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, AddFragment.newInstance(this), fragmentTag)
-                .addToBackStack(PasswordListFragment::javaClass.name)
-                .commit()
+        val i = Intent(applicationContext, PasswordInputActivity::class.java)
+        i.putExtra(PasswordInputActivity.KEY_INPUT_TYPE, PasswordInputActivity.INPUT_TYPE_INPUT)
+        startActivity(i)
     }
 }

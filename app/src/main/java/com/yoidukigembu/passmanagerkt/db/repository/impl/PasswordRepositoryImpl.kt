@@ -24,4 +24,31 @@ class PasswordRepositoryImpl : BaseRepositoryImpl<Password>(), PasswordRepositor
                 .execute()
     }
 
+    override fun insert(entity: Password): Long {
+        return database.insertIntoPassword(entity)
+    }
+
+    override fun update(entity: Password): Int {
+        return database.updatePassword()
+                .idEq(entity.id)
+                .loginId(entity.loginId)
+                .name(entity.name)
+                .password1(entity.password1)
+                .password2(entity.password2)
+                .loginUrl(entity.loginUrl)
+                .memo(entity.memo)
+                .execute()
+    }
+
+    override fun updateOrderByKey(id: Long, orderByKey: Int): Int {
+        return database.updatePassword()
+                .idEq(id)
+                .orderByKey(orderByKey)
+                .execute()
+    }
+
+    override fun selectMaxOrderByKey(): Int {
+        return database.selectFromPassword()
+                .maxByOrderByKey() ?: 0
+    }
 }

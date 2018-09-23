@@ -93,7 +93,7 @@ open class BaseFragment : Fragment(), BasePresenter.BaseFragmentProcessor {
     }
 
     override fun showDialog(dialogFragment: DialogFragment, tag: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        dialogFragment.show(fragmentManager, tag)
     }
 
     override fun showToast(str: String) {

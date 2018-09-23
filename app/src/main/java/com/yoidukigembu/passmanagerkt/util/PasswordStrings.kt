@@ -1,155 +1,96 @@
 package com.yoidukigembu.passmanagerkt.util
 
-import java.util.ArrayList
-import java.util.Collections
+import org.apache.commons.lang3.RandomUtils
+import java.util.*
+import kotlin.collections.ArrayList
 
 object PasswordStrings {
 
     /**
      * 大文字アルファベットリスト
      */
-    val LARGE_ALPHABET_LIST: List<String>
+    private val LARGE_ALPHABET_LIST = Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z')
+
     /**
      * 小文字アルファベットリスト
      */
-    val SMALL_ALPHABET_LIST: List<String>
+    private val SMALL_ALPHABET_LIST = Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z')
     /**
      * 数字リスト
      */
-    val NUMBER_LIST: List<String>
+    private val NUMBER_LIST = Arrays.asList('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+
     /**
-     * 大文字アルファベットリスト最大インデックス
+     * 記号リスト
      */
-    val MAX_LARGE_ALPHABET_INDEX: Int
-    /**
-     * 小文字アルファベットリスト最大インデックス
-     */
-    val MAX_SMALL_ALPHABET_INDEX: Int
-    /**
-     * 数字アルファベットリスト最大インデックス
-     */
-    val MAX_NUMBER_INDEX: Int
+    private val SYMBOL_LIST = Arrays.asList('_', '-', '!', '&', '#', '$', '?', '%')
+
 
     /**
      * パスワード文字の取得(1文字)
      */
-    fun generatePasswordStr(): String {
-        val random = Math.floor(Math.random() * 300).toInt()
-        if (random < 125) {
-            return generateLargeAlphabet()
+    fun generatePasswordStr(length: Int, isSmallAlpha: Boolean, isBigAlpha: Boolean, isNumber: Boolean, isSymbol: Boolean): String {
+
+        val typeList = LetterType.getTypeList(isSmallAlpha, isBigAlpha, isNumber, isSymbol)
+        val typeSize = typeList.size
+        val sb = StringBuilder()
+
+        for (i in 0..length) {
+            val type = typeList[RandomUtils.nextInt(0, typeSize)]
+            val list =
+                    when (type) {
+                        LetterType.BIG_ALPHABET -> {
+                            LARGE_ALPHABET_LIST
+                        }
+                        LetterType.SYMBOL -> {
+                            SYMBOL_LIST
+                        }
+                        LetterType.NUMBER -> {
+                            NUMBER_LIST
+                        }
+                        LetterType.SMALL_ALPHABET -> {
+                            SMALL_ALPHABET_LIST
+                        }
+                    }
+
+            sb.append(list[RandomUtils.nextInt(0, list.size)])
         }
-
-        return if (random < 250) {
-            generateSmallAlphabet()
-        } else generateNumber()
-
+        return sb.toString()
     }
 
 
-    /**
-     * 大文字アルファベットの取得(1文字)
-     */
-    private fun generateLargeAlphabet(): String {
-        while (true) {
-            val random = Math.floor(Math.random() * 40).toInt()
-            if (random < MAX_LARGE_ALPHABET_INDEX) {
-                return LARGE_ALPHABET_LIST[random]
+    private enum class LetterType {
+        SMALL_ALPHABET,
+        BIG_ALPHABET,
+        NUMBER,
+        SYMBOL;
+
+
+        companion object {
+            fun getTypeList(isSmallAlpha: Boolean,
+                            isBigAlpha: Boolean,
+                            isNumber: Boolean,
+                            isSymbol: Boolean): List<LetterType> {
+
+                val list = ArrayList<LetterType>()
+                if (isSmallAlpha) {
+                    list.add(SMALL_ALPHABET)
+                }
+                if (isBigAlpha) {
+                    list.add(BIG_ALPHABET)
+                }
+                if (isNumber) {
+                    list.add(NUMBER)
+                }
+                if (isSymbol) {
+                    list.add(SYMBOL)
+                }
+                return list
             }
         }
+
     }
 
-    /**
-     * 小文字アルファベットの取得(1文字)
-     */
-    private fun generateSmallAlphabet(): String {
-        while (true) {
-            val random = Math.floor(Math.random() * 40).toInt()
-            if (random < MAX_SMALL_ALPHABET_INDEX) {
-                return SMALL_ALPHABET_LIST[random]
-            }
-        }
-    }
-
-    /**
-     * 数字の取得(1文字)
-     */
-    private fun generateNumber(): String {
-        while (true) {
-            val random = Math.floor(Math.random() * 10).toInt()
-            if (random < MAX_NUMBER_INDEX) {
-                return NUMBER_LIST[random]
-            }
-        }
-    }
-
-    init {
-        val largeList = ArrayList<String>()
-        largeList.add("A")
-        largeList.add("B")
-        largeList.add("C")
-        largeList.add("D")
-        largeList.add("E")
-        largeList.add("F")
-        largeList.add("G")
-        largeList.add("H")
-        largeList.add("J")
-        largeList.add("K")
-        largeList.add("L")
-        largeList.add("M")
-        largeList.add("N")
-        largeList.add("P")
-        largeList.add("Q")
-        largeList.add("R")
-        largeList.add("S")
-        largeList.add("T")
-        largeList.add("U")
-        largeList.add("V")
-        largeList.add("W")
-        largeList.add("X")
-        largeList.add("Y")
-        largeList.add("Z")
-
-        val smallList = ArrayList<String>()
-        smallList.add("a")
-        smallList.add("b")
-        smallList.add("c")
-        smallList.add("d")
-        smallList.add("e")
-        smallList.add("f")
-        smallList.add("g")
-        smallList.add("h")
-        smallList.add("j")
-        smallList.add("k")
-        smallList.add("m")
-        smallList.add("n")
-        smallList.add("p")
-        smallList.add("q")
-        smallList.add("r")
-        smallList.add("s")
-        smallList.add("t")
-        smallList.add("u")
-        smallList.add("v")
-        smallList.add("w")
-        smallList.add("x")
-        smallList.add("y")
-        smallList.add("z")
-
-        val numberList = ArrayList<String>()
-        numberList.add("2")
-        numberList.add("3")
-        numberList.add("4")
-        numberList.add("5")
-        numberList.add("6")
-        numberList.add("7")
-        numberList.add("8")
-        numberList.add("9")
-
-        LARGE_ALPHABET_LIST = Collections.unmodifiableList(largeList)
-        SMALL_ALPHABET_LIST = Collections.unmodifiableList(smallList)
-        NUMBER_LIST = Collections.unmodifiableList(numberList)
-
-        MAX_LARGE_ALPHABET_INDEX = LARGE_ALPHABET_LIST.size
-        MAX_SMALL_ALPHABET_INDEX = SMALL_ALPHABET_LIST.size
-        MAX_NUMBER_INDEX = NUMBER_LIST.size
-    }
 }

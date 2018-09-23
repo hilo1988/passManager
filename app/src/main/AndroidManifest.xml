@@ -25,6 +25,8 @@
 
         <activity android:name=".controller.activity.PasswordListActivity" />
 
+        <activity android:name=".controller.activity.PasswordInputActivity" />
+
     </application>
 
 </manifest>

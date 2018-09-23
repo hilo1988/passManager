@@ -1,5 +1,6 @@
 package com.yoidukigembu.passmanagerkt.model.holder
 
+import com.yoidukigembu.passmanagerkt.db.repository.PasswordRepository
 import com.yoidukigembu.passmanagerkt.db.repository.impl.PasswordRepositoryImpl
 
 /**
@@ -7,6 +8,6 @@ import com.yoidukigembu.passmanagerkt.db.repository.impl.PasswordRepositoryImpl
  */
 object RepositoryHolder {
 
-    val passwordRepository = PasswordRepositoryImpl()
+    val passwordRepository: PasswordRepository = PasswordRepositoryImpl()
 
 }

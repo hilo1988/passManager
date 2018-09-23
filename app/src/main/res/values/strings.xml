@@ -6,6 +6,7 @@
     <string name="submit">登録</string>
     <string name="login">ログイン</string>
     <string name="password">パスワード</string>
+    <string name="password2">パスワード2</string>
     <string name="passwordConf">パスワード(確認)</string>
 
     <string name="app_password_registration">アプリ用パスワード登録</string>
@@ -21,13 +22,21 @@
     <string name="openLoginUrl">ログインURLを開く</string>
     <string name="copyLoginId">ログインIDをコピー</string>
     <string name="copyPassword">パスワードをコピー</string>
+    <string name="generate">生成</string>
     <string name="edit">編集</string>
     <string name="delete">削除</string>
+    <string name="numberSize">桁数</string>
+    <string name="bigAlphabet">大文字アルファベット</string>
+    <string name="smallAlphabet">小文字アルファベット</string>
+    <string name="numberLetter">数字</string>
+    <string name="symbolLetter">記号</string>
 
     <string name="labelName">項目名</string>
     <string name="loginId">ログインID</string>
     <string name="loginUrl">ログインURL</string>
     <string name="memo">メモ</string>
+    <string name="eight">8</string>
+    <string name="letterType">文字種別</string>
 
 
     <!-- 指紋認証サンプルからパクったやつ -->
@@ -61,7 +70,9 @@
     <string name="format_deleted">%sを削除しました。</string>
 
 
+    <string name="error_numberSizeLength">桁数は1〜99の間で入力してね</string>
     <string name="error_required">%sを入力してね</string>
+    <string name="error_noSelected">%sを選択してね</string>
     <string name="error_passwordCreateFailed">パスワードの生成に失敗しました。</string>
     <string name="error_cannot_login">ログインできなかったよ</string>
     <string name="error_notEquals" formatted="false">%sと%sが一致しません</string>
