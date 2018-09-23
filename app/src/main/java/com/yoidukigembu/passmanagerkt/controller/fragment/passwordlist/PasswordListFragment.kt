@@ -28,7 +28,7 @@ class PasswordListFragment : BaseFragment(), PasswordListPresenter.FragmentProce
     lateinit var presenter: PasswordListPresenter
 
     /** アダプタ */
-    lateinit var adapter: PasswordAdapter
+    private var adapter: PasswordAdapter? = null
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -39,17 +39,21 @@ class PasswordListFragment : BaseFragment(), PasswordListPresenter.FragmentProce
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter.selectPasswordList()
 
         passwordListView.onItemClickListener = AdapterView.OnItemClickListener { _, _, _, id ->
             presenter.onListItemClicked(id)
         }
 
-        addButton.setOnClickListener(View.OnClickListener { _ -> operator.showAddFragment() })
+        addButton.setOnClickListener { _ -> operator.showAddFragment() }
     }
 
 
     override fun showPasswordList(relation: Password_Relation) {
+
         adapter = PasswordAdapter(context, relation)
+        passwordListView.adapter = adapter
+        return
     }
 
     override fun showPasswordMenu(password: Password, menuList: List<MenuData>) {
