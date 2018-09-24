@@ -50,7 +50,7 @@ class PasswordListPresenterImpl(val processor: PasswordListPresenter.FragmentPro
         when {
             menu == PasswordMenu.SHOW_DETAIL -> processor.showDetail(password)
             menu == PasswordMenu.COPY_LOGIN_ID && password.loginId != null -> copyLoginId(password.loginId!!)
-            menu == PasswordMenu.COPY_PASSWORD -> copyPassword(Cryptor.getInstance().decrypt(password.password1!!))
+            menu == PasswordMenu.COPY_PASSWORD1 -> copyPassword(Cryptor.getInstance().decrypt(password.password1!!))
             menu == PasswordMenu.EDIT -> processor.showEdit(id)
             menu == PasswordMenu.DELETE -> showDeleteDialog(password)
         }

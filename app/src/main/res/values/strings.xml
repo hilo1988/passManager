@@ -21,7 +21,8 @@
     <string name="sendMail">メール送信</string>
     <string name="openLoginUrl">ログインURLを開く</string>
     <string name="copyLoginId">ログインIDをコピー</string>
-    <string name="copyPassword">パスワードをコピー</string>
+    <string name="copyPassword1">パスワード1をコピー</string>
+    <string name="copyPassword2">パスワード2をコピー</string>
     <string name="generate">生成</string>
     <string name="edit">編集</string>
     <string name="delete">削除</string>
@@ -37,6 +38,8 @@
     <string name="memo">メモ</string>
     <string name="eight">8</string>
     <string name="letterType">文字種別</string>
+
+    <string name="display">表示</string>
 
 
     <!-- 指紋認証サンプルからパクったやつ -->

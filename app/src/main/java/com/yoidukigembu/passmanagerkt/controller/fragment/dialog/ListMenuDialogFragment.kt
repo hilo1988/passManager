@@ -10,10 +10,12 @@ import com.yoidukigembu.passmanagerkt.R
 import com.yoidukigembu.passmanagerkt.functionalinterface.controller.fragment.dialog.OnMenuSelectedListener
 import com.yoidukigembu.passmanagerkt.valueobject.MenuData
 import com.yoidukigembu.passmanagerkt.view.adapter.MenuAdapter
-import kotlinx.android.synthetic.main.dialog_list_menu.*
+import kotlinx.android.synthetic.main.dialog_list_menu.view.*
 
 
 open class ListMenuDialogFragment : DialogFragment() {
+
+    lateinit var mView: View
 
     lateinit var dataList: List<MenuData>
 
@@ -25,17 +27,18 @@ open class ListMenuDialogFragment : DialogFragment() {
         val builder = AlertDialog.Builder(context);
         builder.setView(view)
 
-        return builder.create()
-    }
+        this.mView = view
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
 
-        menuList.adapter = MenuAdapter(context, dataList)
-        menuList.onItemClickListener = AdapterView.OnItemClickListener { parent, v, position, id ->
+        val listView = view.menuListView
+
+        listView.adapter = MenuAdapter(context, dataList)
+        listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, _, id ->
             onMenuSelectedListener.onMenuSelected(id)
             dismiss()
         }
-        super.onViewCreated(view, savedInstanceState)
+
+        return builder.create()
     }
 
 
