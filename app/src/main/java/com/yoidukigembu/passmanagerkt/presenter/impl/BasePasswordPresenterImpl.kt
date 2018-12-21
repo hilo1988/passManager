@@ -2,7 +2,6 @@ package com.yoidukigembu.passmanagerkt.presenter.impl
 
 import com.yoidukigembu.passmanagerkt.R
 import com.yoidukigembu.passmanagerkt.controller.fragment.dialog.PasswordGeneratorDialogFragment
-import com.yoidukigembu.passmanagerkt.functionalinterface.controller.fragment.dialog.OnPasswordGeneratedListener
 import com.yoidukigembu.passmanagerkt.presenter.BasePasswordPresenter
 import com.yoidukigembu.passmanagerkt.util.ContextUtils
 import io.reactivex.Single
@@ -27,9 +26,11 @@ abstract class BasePasswordPresenterImpl : BasePresenterImpl(), BasePasswordPres
             getProcessor().showToast(validateMsg!!)
             return
         }
+
+        save()
         Single
                 .create { s: SingleEmitter<Any> ->
-                    save()
+
                     s.onSuccess(1)
                 }
                 .subscribeOn(Schedulers.io())
@@ -39,13 +40,13 @@ abstract class BasePasswordPresenterImpl : BasePresenterImpl(), BasePasswordPres
     }
 
     override fun createPasswordGenerateDialog(type: BasePasswordPresenter.PasswordType) {
-        val f = PasswordGeneratorDialogFragment.newInstance(OnPasswordGeneratedListener {
+        val f = PasswordGeneratorDialogFragment.newInstance {
             if (type == BasePasswordPresenter.PasswordType.FIRST) {
                 getProcessor().setPassword1(it)
             } else {
                 getProcessor().setPassword2(it)
             }
-        })
+        }
 
         getProcessor().showDialog(f, PasswordGeneratorDialogFragment::class.java.name)
     }

@@ -13,8 +13,6 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.functionalinterface.controller.fragment.dialog.AuthenticationCallback
-import com.yoidukigembu.passmanagerkt.functionalinterface.controller.fragment.dialog.AuthenticationFailedCallback
 import com.yoidukigembu.passmanagerkt.model.helper.FingerprintUiHelper
 import com.yoidukigembu.passmanagerkt.model.holder.KeyStoreHolder
 import kotlinx.android.synthetic.main.fingerprint_dialog_backup.*
@@ -28,8 +26,8 @@ import kotlinx.android.synthetic.main.fingerprint_dialog_content.*
 class FingerprintAuthenticationDialog : DialogFragment(), TextView.OnEditorActionListener, FingerprintUiHelper.Callback {
 
 
-    private var authenticationCallback: AuthenticationCallback? = null
-    private var failedCallback: AuthenticationFailedCallback? = null
+    private var authCallback: ((FingerprintManager.CryptoObject?) -> Unit)? = null
+    private var failedCallback: (() -> Unit)? = null
     private var defaultKey: String? = null
 
 
@@ -139,7 +137,7 @@ class FingerprintAuthenticationDialog : DialogFragment(), TextView.OnEditorActio
         }
         password!!.setText("")
         // TODO これはfailなのか・・・？
-        failedCallback!!.onFail()
+        failedCallback?.let { it() }
         dismiss()
     }
 
@@ -188,7 +186,9 @@ class FingerprintAuthenticationDialog : DialogFragment(), TextView.OnEditorActio
         // Callback from FingerprintUiHelper. Let the activity know that authentication was
         // successful.
         dismiss()
-        authenticationCallback!!.onAuthenticated(mCryptoObject)
+        authCallback?.let {
+            it(mCryptoObject)
+        }
     }
 
     override fun onError() {
@@ -224,11 +224,11 @@ class FingerprintAuthenticationDialog : DialogFragment(), TextView.OnEditorActio
 
         fun newInstance(
                 defaultKey: String,
-                authenticationCallback: AuthenticationCallback,
-                failedCallback: AuthenticationFailedCallback): FingerprintAuthenticationDialog {
+                authenticationCallback: ((FingerprintManager.CryptoObject?) -> Unit),
+                failedCallback: (() -> Unit)): FingerprintAuthenticationDialog {
 
             val dialog = FingerprintAuthenticationDialog()
-            dialog.authenticationCallback = authenticationCallback
+            dialog.authCallback = authenticationCallback
             dialog.failedCallback = failedCallback
             dialog.defaultKey = defaultKey
             return dialog

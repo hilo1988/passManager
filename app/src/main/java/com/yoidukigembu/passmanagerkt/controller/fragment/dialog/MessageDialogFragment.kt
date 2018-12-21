@@ -5,7 +5,6 @@ import android.app.Dialog
 import android.app.DialogFragment
 import android.content.DialogInterface
 import android.os.Bundle
-import com.yoidukigembu.passmanagerkt.functionalinterface.controller.fragment.dialog.DismissCallback
 
 /**
  * メッセージを表示するダイアログ
@@ -32,7 +31,7 @@ class MessageDialogFragment : DialogFragment() {
 
     override fun onDismiss(dialog: DialogInterface?) {
         super.onDismiss(dialog)
-        messageData.dissmissCallback?.onDismiss()
+        messageData.dismissCallback?.let { it() }
     }
 
     companion object {
@@ -56,7 +55,7 @@ class MessageDialogFragment : DialogFragment() {
 
             var negativeListener: DialogInterface.OnClickListener? = null
 
-            var dissmissCallback: DismissCallback? = null
+            var dismissCallback: (() -> Unit)? = null
 
         }
     }

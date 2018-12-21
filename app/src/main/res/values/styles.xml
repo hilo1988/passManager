@@ -28,4 +28,9 @@
         <item name="android:background">@drawable/red_round</item>
     </style>
 
+    <style name="labelText">
+        <item name="android:layout_margin">@dimen/marginShort</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+    </style>
+
 </resources>

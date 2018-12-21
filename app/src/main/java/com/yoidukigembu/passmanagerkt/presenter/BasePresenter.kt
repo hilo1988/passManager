@@ -2,6 +2,7 @@ package com.yoidukigembu.passmanagerkt.presenter
 
 import android.app.DialogFragment
 import android.content.Context
+import io.reactivex.disposables.CompositeDisposable
 
 /**
  * 基底プレゼンタ
@@ -29,6 +30,8 @@ interface BasePresenter {
          * コンテキスト取得
          */
         fun getContext(): Context
+
+        fun getDisposable(): CompositeDisposable?
     }
 
 }

@@ -44,7 +44,6 @@ enum class PasswordMenu(val id: Long, val stringResId: Int) : MenuDataAccessor {
                 list.add(MenuData(COPY_PASSWORD2))
             }
 
-            list.add(MenuData(COPY_PASSWORD2))
             list.add(MenuData(EDIT))
             list.add(MenuData(DELETE))
 

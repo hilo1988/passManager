@@ -11,9 +11,12 @@ class PMApplication : Application() {
         super.onCreate()
         self = this
 
+
         BaseRepositoryImpl.database = OrmaDatabase
                 .builder(this)
+                .name("my.db")
                 .build()
+
 
     }
 

@@ -5,6 +5,8 @@ import com.yoidukigembu.passmanagerkt.model.usecase.impl.PasswordUseCaseImpl
 import com.yoidukigembu.passmanagerkt.presenter.BasePasswordPresenter
 import com.yoidukigembu.passmanagerkt.presenter.InputPasswordPresenter
 import com.yoidukigembu.passmanagerkt.presenter.impl.BasePasswordPresenterImpl
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class InputPasswordPresenterImpl(val processor: InputPasswordPresenter.FragmentProcessor) : BasePasswordPresenterImpl(), InputPasswordPresenter {
 
@@ -21,6 +23,11 @@ class InputPasswordPresenterImpl(val processor: InputPasswordPresenter.FragmentP
             return
         }
         usecase.register(processor)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ processor.onSaveFinished() }, {})
+                .apply { processor.getDisposable()?.add(this) }
+
     }
 
 

@@ -10,7 +10,6 @@ import com.yoidukigembu.passmanagerkt.controller.fragment.BaseFragment
 import com.yoidukigembu.passmanagerkt.controller.fragment.dialog.ListMenuDialogFragment
 import com.yoidukigembu.passmanagerkt.db.entity.Password
 import com.yoidukigembu.passmanagerkt.db.entity.Password_Relation
-import com.yoidukigembu.passmanagerkt.functionalinterface.controller.fragment.dialog.OnMenuSelectedListener
 import com.yoidukigembu.passmanagerkt.presenter.passwordlist.PasswordListPresenter
 import com.yoidukigembu.passmanagerkt.presenter.passwordlist.impl.PasswordListPresenterImpl
 import com.yoidukigembu.passmanagerkt.valueobject.MenuData
@@ -51,26 +50,29 @@ class PasswordListFragment : BaseFragment(), PasswordListPresenter.FragmentProce
 
     override fun showPasswordList(relation: Password_Relation) {
 
-        adapter = PasswordAdapter(context, relation)
+        val adapter = PasswordAdapter(context, relation)
         passwordListView.adapter = adapter
+        this.adapter = adapter
         return
     }
 
     override fun showPasswordMenu(password: Password, menuList: List<MenuData>) {
 
-        val dialog = ListMenuDialogFragment.newInstance(menuList,
-                OnMenuSelectedListener { id -> presenter.onMenuSelected(id, password) })
+        val dialog = ListMenuDialogFragment.newInstance(menuList) { id -> presenter.onMenuSelected(id, password) }
         dialog.show(fragmentManager, ListMenuDialogFragment::javaClass.name)
     }
 
     override fun showDetail(password: Password) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        operator.showDetailFragment(password)
     }
 
     override fun showEdit(id: Long) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        operator.showEditFragment(id)
     }
 
+    override fun openUrl(url: String) {
+        operator.openUrl(url)
+    }
 
     override fun notifyDataSetChanged() {
         passwordListView.deferNotifyDataSetChanged()
@@ -95,6 +97,21 @@ class PasswordListFragment : BaseFragment(), PasswordListPresenter.FragmentProce
          * 追加フラグメントの表示
          */
         fun showAddFragment()
+
+        /**
+         * 変更フラグメントの表示
+         */
+        fun showEditFragment(id: Long)
+
+        /**
+         * URLの表示
+         */
+        fun openUrl(url: String)
+
+        /**
+         * 詳細フラグメントの表示
+         */
+        fun showDetailFragment(entity: Password)
     }
 
 

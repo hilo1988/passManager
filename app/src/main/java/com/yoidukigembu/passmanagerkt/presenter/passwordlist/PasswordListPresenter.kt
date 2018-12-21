@@ -57,5 +57,10 @@ interface PasswordListPresenter : BasePresenter {
          */
         fun notifyDataSetChanged()
 
+        /**
+         * URLを開く
+         */
+        fun openUrl(url: String)
+
     }
 }

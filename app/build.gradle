@@ -9,7 +9,7 @@ android {
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "com.yoidukigembu.passmanagerkt"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -35,7 +35,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 
-    implementation 'com.yoiduigembu:crypt:0.0.1'
+    implementation 'com.yoiduigembu:crypt:0.0.2'
 
     // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
@@ -43,9 +43,9 @@ dependencies {
     kapt 'com.github.gfx.android.orma:orma-processor:4.2.5'
     implementation 'com.github.gfx.android.orma:orma:4.2.5'
 
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     // https://mvnrepository.com/artifact/io.reactivex/rxkotlin
-    implementation group: 'io.reactivex', name: 'rxkotlin', version: '2.0.0-RC1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.x.y'
 
     implementation 'com.android.support:design:27.1.1'
 

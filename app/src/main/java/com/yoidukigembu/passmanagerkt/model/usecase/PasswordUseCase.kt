@@ -1,6 +1,7 @@
 package com.yoidukigembu.passmanagerkt.model.usecase
 
 import com.yoidukigembu.passmanagerkt.accessor.PasswordDataAccessor
+import io.reactivex.Single
 
 
 /**
@@ -15,7 +16,7 @@ interface PasswordUseCase {
      * パスワード登録
      * @return ID
      */
-    fun register(accessor: PasswordDataAccessor): Long
+    fun register(accessor: PasswordDataAccessor): Single<Long>
 
     fun update(accessor: PasswordDataAccessor)
 }

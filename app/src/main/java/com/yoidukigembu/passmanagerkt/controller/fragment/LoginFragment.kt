@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.yoidukigembu.passmanagerkt.R
 import com.yoidukigembu.passmanagerkt.controller.fragment.dialog.FingerprintAuthenticationDialog
-import com.yoidukigembu.passmanagerkt.functionalinterface.controller.fragment.dialog.AuthenticationCallback
-import com.yoidukigembu.passmanagerkt.functionalinterface.controller.fragment.dialog.AuthenticationFailedCallback
 import com.yoidukigembu.passmanagerkt.presenter.LoginPresenter
 import com.yoidukigembu.passmanagerkt.presenter.PresenterFactory
 import com.yoidukigembu.passmanagerkt.util.Logger
@@ -39,11 +37,11 @@ class LoginFragment : BaseFragment(), LoginPresenter.FragmentProcessor {
         activity.setActionBar(myToolbar)
 
         val dialog = FingerprintAuthenticationDialog.newInstance("default",
-                AuthenticationCallback {
+                {
                     Logger.d()
                     operator?.onLogin()
                 },
-                AuthenticationFailedCallback { Logger.w("認証に失敗しました。") }
+                { Logger.w("認証に失敗しました。") }
         )
 
         dialog.show(fragmentManager, FingerprintAuthenticationDialog::javaClass.name)

@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.functionalinterface.controller.fragment.dialog.OnMenuSelectedListener
 import com.yoidukigembu.passmanagerkt.valueobject.MenuData
 import com.yoidukigembu.passmanagerkt.view.adapter.MenuAdapter
 import kotlinx.android.synthetic.main.dialog_list_menu.view.*
@@ -19,7 +18,7 @@ open class ListMenuDialogFragment : DialogFragment() {
 
     lateinit var dataList: List<MenuData>
 
-    lateinit var onMenuSelectedListener: OnMenuSelectedListener
+    var onMenuSelectedListener: ((Long) -> Unit)? = null
 
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -34,7 +33,7 @@ open class ListMenuDialogFragment : DialogFragment() {
 
         listView.adapter = MenuAdapter(context, dataList)
         listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, _, id ->
-            onMenuSelectedListener.onMenuSelected(id)
+            onMenuSelectedListener?.let { it(id) }
             dismiss()
         }
 
@@ -43,7 +42,7 @@ open class ListMenuDialogFragment : DialogFragment() {
 
 
     companion object {
-        fun newInstance(dataList: List<MenuData>, onMenuSelectedListener: OnMenuSelectedListener):
+        fun newInstance(dataList: List<MenuData>, onMenuSelectedListener: ((Long) -> Unit)?):
                 ListMenuDialogFragment {
 
             val f = ListMenuDialogFragment()

@@ -12,11 +12,14 @@ import android.view.View
 import android.widget.Toast
 import com.yoidukigembu.passmanagerkt.presenter.BasePresenter
 import com.yoidukigembu.passmanagerkt.util.Logger
+import io.reactivex.disposables.CompositeDisposable
 
 /**
  * 基底フラグメント
  */
 open class BaseFragment : Fragment(), BasePresenter.BaseFragmentProcessor {
+
+    var cDisposable: CompositeDisposable? = null
 
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)
@@ -63,6 +66,7 @@ open class BaseFragment : Fragment(), BasePresenter.BaseFragmentProcessor {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.cDisposable = CompositeDisposable()
         Logger.v("self:[%s]", this)
     }
 
@@ -103,6 +107,8 @@ open class BaseFragment : Fragment(), BasePresenter.BaseFragmentProcessor {
     override fun showToast(stringRes: Int) {
         Toast.makeText(context, stringRes, Toast.LENGTH_SHORT).show()
     }
+
+    override fun getDisposable(): CompositeDisposable? = this.cDisposable
 
     /**
      * アクティビティに処理させる基底I/F

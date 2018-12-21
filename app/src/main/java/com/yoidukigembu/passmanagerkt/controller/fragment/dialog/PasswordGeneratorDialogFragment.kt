@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.functionalinterface.controller.fragment.dialog.OnPasswordGeneratedListener
 import com.yoidukigembu.passmanagerkt.util.ContextUtils
 import com.yoidukigembu.passmanagerkt.util.Logger
 import com.yoidukigembu.passmanagerkt.util.PasswordStrings
@@ -22,7 +21,7 @@ class PasswordGeneratorDialogFragment : DialogFragment() {
 
     private lateinit var mView: View
 
-    private var onPasswordGeneratedListener: OnPasswordGeneratedListener? = null
+    private var onPasswordGeneratedListener: ((String) -> Unit)? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = View.inflate(context, R.layout.dialog_password_generator, null)
@@ -77,13 +76,13 @@ class PasswordGeneratorDialogFragment : DialogFragment() {
 
         Logger.d("generated passowrd:[%s]", password)
 
-        onPasswordGeneratedListener?.onPasswordGenerated(password)
+        onPasswordGeneratedListener?.let { it(password) }
         dismiss()
     }
 
 
     companion object {
-        fun newInstance(onPasswordGeneratedListener: OnPasswordGeneratedListener): PasswordGeneratorDialogFragment {
+        fun newInstance(onPasswordGeneratedListener: ((String) -> Unit)): PasswordGeneratorDialogFragment {
             val f = PasswordGeneratorDialogFragment()
             f.onPasswordGeneratedListener = onPasswordGeneratedListener
             return f
