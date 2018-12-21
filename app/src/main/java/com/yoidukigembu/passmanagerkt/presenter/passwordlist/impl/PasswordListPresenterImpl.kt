@@ -90,6 +90,8 @@ class PasswordListPresenterImpl(private val processor: PasswordListPresenter.Fra
             processor.showToast(ContextUtils.formatString(R.string.format_deleted, R.string.password))
         }
 
+        data.negativeTitle = processor.getContext().getString(R.string.cancel)
+
         val messageDialog = MessageDialogFragment.newInstance(data)
         processor.showDialog(messageDialog, "deleteDialog")
 

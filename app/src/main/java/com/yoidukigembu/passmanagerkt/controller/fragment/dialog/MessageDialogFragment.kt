@@ -23,9 +23,9 @@ class MessageDialogFragment : DialogFragment() {
 
         builder.setPositiveButton(messageData.positiveTitle, messageData.positiveListener)
 
-        messageData.negativeTitle?.let { title -> builder.setNegativeButton(title, messageData.negativeListener) }
+        messageData.negativeTitle?.let { builder.setNegativeButton(it, messageData.negativeListener) }
 
-        return super.onCreateDialog(savedInstanceState)
+        return builder.create()
     }
 
 
