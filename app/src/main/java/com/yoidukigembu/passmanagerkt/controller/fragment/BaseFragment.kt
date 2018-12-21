@@ -93,6 +93,7 @@ open class BaseFragment : Fragment(), BasePresenter.BaseFragmentProcessor {
 
     override fun onDestroy() {
         super.onDestroy()
+        cDisposable?.dispose()
         Logger.v("self:[%s]", this)
     }
 
