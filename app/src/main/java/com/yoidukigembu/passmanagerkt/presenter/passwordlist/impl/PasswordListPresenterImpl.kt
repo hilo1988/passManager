@@ -42,7 +42,7 @@ class PasswordListPresenterImpl(private val processor: PasswordListPresenter.Fra
             PasswordMenu.COPY_LOGIN_ID -> password.loginId?.apply { copyLoginId(this) }
             PasswordMenu.COPY_PASSWORD1 -> password.password1?.apply { copyPassword(Cryptor.getInstance().decrypt(this)) }
             PasswordMenu.COPY_PASSWORD2 -> password.password2?.apply { copyPassword(Cryptor.getInstance().decrypt(this)) }
-            PasswordMenu.EDIT -> processor.showEdit(id)
+            PasswordMenu.EDIT -> processor.showEdit(password.id)
             PasswordMenu.DELETE -> showDeleteDialog(password)
             PasswordMenu.OPEN_LOGIN_URL -> password.loginUrl?.apply { processor.openUrl(this) }
             PasswordMenu.SEND_MAIL -> share(password)

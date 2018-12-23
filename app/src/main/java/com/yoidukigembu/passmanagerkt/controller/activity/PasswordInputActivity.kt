@@ -1,10 +1,12 @@
 package com.yoidukigembu.passmanagerkt.controller.activity
 
+import android.app.Fragment
 import android.os.Bundle
 import com.yoidukigembu.passmanagerkt.R
+import com.yoidukigembu.passmanagerkt.controller.fragment.passwordinput.PasswordEditFragment
 import com.yoidukigembu.passmanagerkt.controller.fragment.passwordinput.PasswordInputFragment
 
-class PasswordInputActivity : BaseActivity(), PasswordInputFragment.ActivityOperator {
+class PasswordInputActivity : BaseActivity(), PasswordInputFragment.ActivityOperator, PasswordEditFragment.ActivityOperator {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -13,12 +15,22 @@ class PasswordInputActivity : BaseActivity(), PasswordInputFragment.ActivityOper
         val inputType = intent.extras.getInt(KEY_INPUT_TYPE)
 
 
+        val f: Fragment
+
         if (inputType == INPUT_TYPE_INPUT) {
-            val f = PasswordInputFragment.newInstance(this)
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, f)
-                    .commit()
+            f = PasswordInputFragment.newInstance(this)
+
+        } else {
+            val passwordId = intent.extras.getLong(KEY_PASSWORD_ID)
+            f = PasswordEditFragment().also {
+                it.passwordId = passwordId
+                it.operator = this
+            }
         }
+
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, f)
+                .commit()
     }
 
     companion object {
