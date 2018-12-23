@@ -1,7 +1,6 @@
 package com.yoidukigembu.passmanagerkt.presenter.passwordlist
 
-import com.yoidukigembu.passmanagerkt.db.entity.Password
-import com.yoidukigembu.passmanagerkt.db.entity.Password_Relation
+import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
 import com.yoidukigembu.passmanagerkt.presenter.BasePresenter
 import com.yoidukigembu.passmanagerkt.valueobject.MenuData
 
@@ -35,7 +34,7 @@ interface PasswordListPresenter : BasePresenter {
         /**
          * アダプタの作成
          */
-        fun showPasswordList(relation: Password_Relation)
+        fun showPasswordList(results: List<Password>)
 
         /**
          * パスワードメニューの作成
@@ -51,11 +50,6 @@ interface PasswordListPresenter : BasePresenter {
          * 変更画面表示
          */
         fun showEdit(id: Long)
-
-        /**
-         * リスト更新
-         */
-        fun notifyDataSetChanged()
 
         /**
          * URLを開く

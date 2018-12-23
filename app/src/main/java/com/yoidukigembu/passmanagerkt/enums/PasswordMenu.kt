@@ -3,7 +3,7 @@ package com.yoidukigembu.passmanagerkt.enums
 import com.yoidukigembu.passmanagerkt.PMApplication
 import com.yoidukigembu.passmanagerkt.R
 import com.yoidukigembu.passmanagerkt.accessor.MenuDataAccessor
-import com.yoidukigembu.passmanagerkt.db.entity.Password
+import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
 import com.yoidukigembu.passmanagerkt.valueobject.MenuData
 
 enum class PasswordMenu(val id: Long, val stringResId: Int) : MenuDataAccessor {

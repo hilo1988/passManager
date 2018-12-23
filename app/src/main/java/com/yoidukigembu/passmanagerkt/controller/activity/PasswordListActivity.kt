@@ -7,7 +7,7 @@ import com.yoidukigembu.passmanagerkt.R
 import com.yoidukigembu.passmanagerkt.controller.fragment.passwordinput.PasswordInputFragment
 import com.yoidukigembu.passmanagerkt.controller.fragment.passwordlist.PasswordDetailFragment
 import com.yoidukigembu.passmanagerkt.controller.fragment.passwordlist.PasswordListFragment
-import com.yoidukigembu.passmanagerkt.db.entity.Password
+import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
 
 class PasswordListActivity : BaseActivity(), PasswordListFragment.ActivityOperator,
         PasswordInputFragment.ActivityOperator, PasswordDetailFragment.ActivityOperator {

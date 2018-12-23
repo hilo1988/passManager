@@ -8,8 +8,8 @@ import android.widget.AdapterView
 import com.yoidukigembu.passmanagerkt.R
 import com.yoidukigembu.passmanagerkt.controller.fragment.BaseFragment
 import com.yoidukigembu.passmanagerkt.controller.fragment.dialog.ListMenuDialogFragment
-import com.yoidukigembu.passmanagerkt.db.entity.Password
-import com.yoidukigembu.passmanagerkt.db.entity.Password_Relation
+import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
+import com.yoidukigembu.passmanagerkt.model.holder.SubjectHolder
 import com.yoidukigembu.passmanagerkt.presenter.passwordlist.PasswordListPresenter
 import com.yoidukigembu.passmanagerkt.presenter.passwordlist.impl.PasswordListPresenterImpl
 import com.yoidukigembu.passmanagerkt.valueobject.MenuData
@@ -44,16 +44,18 @@ class PasswordListFragment : BaseFragment(), PasswordListPresenter.FragmentProce
             presenter.onListItemClicked(id)
         }
 
-        addButton.setOnClickListener { _ -> operator.showAddFragment() }
+        addButton.setOnClickListener { operator.showAddFragment() }
     }
 
 
-    override fun showPasswordList(relation: Password_Relation) {
-
-        val adapter = PasswordAdapter(context, relation)
+    override fun showPasswordList(results: List<Password>) {
+        val adapter = PasswordAdapter(context, results)
         passwordListView.adapter = adapter
         this.adapter = adapter
-        return
+
+        SubjectHolder.onPasswordChangedSubject.subscribe {
+            passwordListView.deferNotifyDataSetChanged()
+        }
     }
 
     override fun showPasswordMenu(password: Password, menuList: List<MenuData>) {
@@ -72,10 +74,6 @@ class PasswordListFragment : BaseFragment(), PasswordListPresenter.FragmentProce
 
     override fun openUrl(url: String) {
         operator.openUrl(url)
-    }
-
-    override fun notifyDataSetChanged() {
-        passwordListView.deferNotifyDataSetChanged()
     }
 
     companion object {

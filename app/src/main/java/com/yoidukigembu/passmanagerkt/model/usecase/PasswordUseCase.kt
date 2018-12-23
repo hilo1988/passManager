@@ -16,7 +16,7 @@ interface PasswordUseCase {
      * パスワード登録
      * @return ID
      */
-    fun register(accessor: PasswordDataAccessor): Single<Long>
+    fun register(accessor: PasswordDataAccessor): Single<Unit>
 
     fun update(accessor: PasswordDataAccessor)
 }

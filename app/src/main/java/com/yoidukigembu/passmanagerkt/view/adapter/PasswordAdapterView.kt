@@ -3,12 +3,13 @@ package com.yoidukigembu.passmanagerkt.view.adapter
 import android.content.Context
 import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
-import com.yoidukigembu.passmanagerkt.db.entity.Password
+import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
 import kotlinx.android.synthetic.main.adapter_password_list.view.*
 
 class PasswordAdapterView : ConstraintLayout {
 
-    @JvmOverloads constructor(
+    @JvmOverloads
+    constructor(
             context: Context,
             attrs: AttributeSet? = null,
             defStyleAttr: Int = 0

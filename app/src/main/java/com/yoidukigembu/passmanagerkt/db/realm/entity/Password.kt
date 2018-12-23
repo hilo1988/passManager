@@ -1,18 +1,11 @@
-package com.yoidukigembu.passmanagerkt.db.entity
+package com.yoidukigembu.passmanagerkt.db.realm.entity
 
-import com.github.gfx.android.orma.annotation.Column
-import com.github.gfx.android.orma.annotation.PrimaryKey
-import com.github.gfx.android.orma.annotation.Table
 import com.yoidukigembu.passmanagerkt.accessor.PasswordDataAccessor
 import com.yoidukigembu.passmanagerkt.valueobject.Cryptor
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
 
-/**
- * パスワード用エンティティ
- *
- * @author BALIUS
- */
-@Table("passwords")
-class Password() : BaseEntity() {
+open class Password() : RealmObject() {
 
     constructor(accessor: PasswordDataAccessor) : this() {
         if (accessor.getPrimaryId() != null) {
@@ -28,52 +21,30 @@ class Password() : BaseEntity() {
         this.memo = accessor.getMemo()
     }
 
-
-    @Column("_id")
-    @PrimaryKey(autoincrement = true)
+    @PrimaryKey
     var id: Long = 0
 
-    /**
-     * ログインID
-     */
-    @Column("login_id")
+    /** ログインID */
     var loginId: String? = null
 
-    /**
-     * 名前
-     */
-    @Column("name")
+
+    /** 名前 */
     var name: String? = null
 
-    /**
-     * 第一パスワード
-     */
-    @Column("password1")
+    /** 第一パスワード */
     var password1: ByteArray? = null
 
-    /**
-     * 第二パスワード
-     */
-    @Column("password2")
+    /** 第二パスワード */
     var password2: ByteArray? = null
 
-    /**
-     * ログインURL
-     */
-    @Column("login_url")
+
+    /** ログインURL */
     var loginUrl: String? = null
 
-    /**
-     * メモ
-     */
-    @Column("memo")
+    /** メモ */
     var memo: String? = null
 
-    /**
-     * ORDER BY キー
-     */
-    @Column(value = "order_by_key", indexed = true)
+    /** ORDER BY キー */
     var orderByKey: Int? = null
-
 
 }

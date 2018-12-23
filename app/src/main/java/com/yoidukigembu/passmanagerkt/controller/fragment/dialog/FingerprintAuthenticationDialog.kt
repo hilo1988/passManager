@@ -185,7 +185,7 @@ class FingerprintAuthenticationDialog : DialogFragment(), TextView.OnEditorActio
     override fun onAuthenticated() {
         // Callback from FingerprintUiHelper. Let the activity know that authentication was
         // successful.
-        dismiss()
+//        dismiss()
         authCallback?.let {
             it(mCryptoObject)
         }

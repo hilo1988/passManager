@@ -1,10 +1,11 @@
 package com.yoidukigembu.passmanagerkt.model.usecase.impl
 
 import com.yoidukigembu.passmanagerkt.accessor.PasswordDataAccessor
-import com.yoidukigembu.passmanagerkt.db.entity.Password
+import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
 import com.yoidukigembu.passmanagerkt.model.holder.RepositoryHolder
 import com.yoidukigembu.passmanagerkt.model.usecase.PasswordUseCase
 import io.reactivex.Single
+import io.realm.Realm
 
 class PasswordUseCaseImpl : PasswordUseCase {
     override fun createPasswordList() {
@@ -12,13 +13,17 @@ class PasswordUseCaseImpl : PasswordUseCase {
     }
 
 
-    override fun register(accessor: PasswordDataAccessor): Single<Long> {
+    override fun register(accessor: PasswordDataAccessor): Single<Unit> {
         val entity = Password(accessor)
         val repository = RepositoryHolder.passwordRepository
-        return repository
-                .selectMaxOrderByKey()
-                .map { entity.also { ent -> ent.orderByKey = it + 1 } }
-                .flatMap { repository.insert(it) }
+
+        return Single.create<Unit> {
+            Realm.getDefaultInstance().executeTransaction {
+                entity.orderByKey = repository.selectMaxOrderByKey() + 1
+                repository.insert(entity)
+            }
+
+        }
     }
 
     override fun update(accessor: PasswordDataAccessor) {

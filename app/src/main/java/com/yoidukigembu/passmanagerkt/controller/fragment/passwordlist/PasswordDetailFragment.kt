@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.yoidukigembu.passmanagerkt.R
 import com.yoidukigembu.passmanagerkt.controller.fragment.BaseFragment
-import com.yoidukigembu.passmanagerkt.db.entity.Password
+import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
 import com.yoidukigembu.passmanagerkt.valueobject.Cryptor
 import com.yoidukigembu.passmanagerkt.valueobject.SecretlyTextData
 import kotlinx.android.synthetic.main.fragment_password_detail.*

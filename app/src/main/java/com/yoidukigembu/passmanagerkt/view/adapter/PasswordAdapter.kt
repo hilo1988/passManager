@@ -3,12 +3,19 @@ package com.yoidukigembu.passmanagerkt.view.adapter
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
-import com.github.gfx.android.orma.widget.OrmaListAdapter
+import android.widget.BaseAdapter
 import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.db.entity.Password
-import com.yoidukigembu.passmanagerkt.db.entity.Password_Relation
+import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
 
-class PasswordAdapter(context: Context, relation: Password_Relation) : OrmaListAdapter<Password>(context, relation) {
+class PasswordAdapter(val context: Context, var results: List<Password>) : BaseAdapter() {
+
+    override fun getItem(position: Int): Any {
+        return results[position]
+    }
+
+    override fun getCount(): Int {
+        return results.size
+    }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view: PasswordAdapterView =
@@ -18,13 +25,13 @@ class PasswordAdapter(context: Context, relation: Password_Relation) : OrmaListA
                     View.inflate(context, R.layout.adapter_password_list, null) as PasswordAdapterView
                 }
 
-        view.bindView(getItem(position))
+        view.bindView(getItem(position) as Password)
 
-        return view;
+        return view
 
     }
 
     override fun getItemId(position: Int): Long {
-        return relation[position].id
+        return (getItem(position) as Password).id
     }
 }

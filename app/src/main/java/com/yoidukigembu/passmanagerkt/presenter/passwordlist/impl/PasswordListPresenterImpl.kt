@@ -3,8 +3,7 @@ package com.yoidukigembu.passmanagerkt.presenter.passwordlist.impl
 import android.content.DialogInterface
 import com.yoidukigembu.passmanagerkt.R
 import com.yoidukigembu.passmanagerkt.controller.fragment.dialog.MessageDialogFragment
-import com.yoidukigembu.passmanagerkt.db.entity.Password
-import com.yoidukigembu.passmanagerkt.db.entity.Password_Relation
+import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
 import com.yoidukigembu.passmanagerkt.enums.PasswordMenu
 import com.yoidukigembu.passmanagerkt.model.holder.RepositoryHolder
 import com.yoidukigembu.passmanagerkt.presenter.passwordlist.PasswordListPresenter
@@ -12,20 +11,18 @@ import com.yoidukigembu.passmanagerkt.util.ContextUtils
 import com.yoidukigembu.passmanagerkt.util.Logger
 import com.yoidukigembu.passmanagerkt.valueobject.Cryptor
 import io.reactivex.Single
-import io.reactivex.SingleOnSubscribe
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class PasswordListPresenterImpl(private val processor: PasswordListPresenter.FragmentProcessor) : PasswordListPresenter {
 
 
     override fun selectPasswordList() {
 
-
-        Single.create(SingleOnSubscribe<Password_Relation> { e -> e.onSuccess(RepositoryHolder.passwordRepository.getListCursor()) })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { relation -> processor.showPasswordList(relation) }
+        Single.create<List<Password>> { it.onSuccess(RepositoryHolder.passwordRepository.selectList().toList()) }
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ processor.showPasswordList(it) },
+                        {})
+                .apply { processor.getDisposable()?.add(this) }
 
     }
 
@@ -35,12 +32,7 @@ class PasswordListPresenterImpl(private val processor: PasswordListPresenter.Fra
 
         RepositoryHolder.passwordRepository
                 .findById(id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        { processor.showPasswordMenu(it, PasswordMenu.createMenuDataList(it)) },
-                        { Logger.e(it, "パスワードセレクト時にエラー") })
-                .let { processor.getDisposable()?.add(it) }
+                ?.let { processor.showPasswordMenu(it, PasswordMenu.createMenuDataList(it)) }
     }
 
     override fun onMenuSelected(id: Long, password: Password) {
@@ -103,15 +95,10 @@ class PasswordListPresenterImpl(private val processor: PasswordListPresenter.Fra
     private fun delete(entity: Password) {
         RepositoryHolder.passwordRepository
                 .deleteById(entity.id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
+                .let {
                     processor.showToast(ContextUtils.formatString(R.string.format_deleted, R.string.password))
-                    processor.notifyDataSetChanged()
                     Logger.i("パスワードを削除しました。rows:[%d]", it)
-                },
-                        { Logger.w(it, "パスワードの削除に失敗しました") })
-                .let { processor.getDisposable()?.add(it) }
+                }
 
 
     }
