@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.hiloislay.passmanagerkt.R
 import com.hiloislay.passmanagerkt.presenter.AppPasswordPresenter
 import com.hiloislay.passmanagerkt.presenter.PresenterFactory
 import kotlinx.android.synthetic.main.fragment_app_password.*
@@ -26,7 +25,7 @@ class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentP
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        submitButton.setOnClickListener { _ ->
+        submitButton.setOnClickListener {
             presenter.createPassword(
                     password1Edit.text.toString(),
                     passwordConfEdit.text.toString())
@@ -34,6 +33,8 @@ class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentP
 
         myToolbar.setTitle(com.hiloislay.passmanagerkt.R.string.app_password_registration)
         activity.setActionBar(myToolbar)
+        fingerprintButton.visibility = View.GONE
+        registerPasswordText.visibility = View.VISIBLE
 
         submitButton.setText(com.hiloislay.passmanagerkt.R.string.submit)
 

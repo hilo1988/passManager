@@ -5,6 +5,7 @@
 
     <string name="submit">登録</string>
     <string name="login">ログイン</string>
+    <string name="fingerPrintLogin">指紋ログイン</string>
     <string name="password">パスワード</string>
     <string name="password2">パスワード2</string>
     <string name="passwordConf">パスワード(確認)</string>
@@ -16,6 +17,7 @@
     <string name="pref_appPassword">pref_appPassword</string>
 
     <string name="plus">+</string>
+    <string name="msg_register_app_password">アプリ用パスワードを登録してください</string>
 
     <string name="showDetail">詳細表示</string>
     <string name="sendMail">メール送信</string>

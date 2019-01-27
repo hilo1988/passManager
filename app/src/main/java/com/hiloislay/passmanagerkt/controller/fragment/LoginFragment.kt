@@ -5,11 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.hiloislay.passmanagerkt.R
 import com.hiloislay.passmanagerkt.controller.fragment.dialog.FingerprintAuthenticationDialog
 import com.hiloislay.passmanagerkt.presenter.LoginPresenter
 import com.hiloislay.passmanagerkt.presenter.PresenterFactory
-import com.hiloislay.passmanagerkt.util.Logger
 import kotlinx.android.synthetic.main.fragment_app_password.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -30,12 +28,18 @@ class LoginFragment : BaseFragment(), LoginPresenter.FragmentProcessor {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        submitButton.setOnClickListener { _ -> onClickSubmitButton() }
+        submitButton.setOnClickListener { onClickSubmitButton() }
         passwordConfEdit.visibility = View.GONE
 
         myToolbar.setTitle(com.hiloislay.passmanagerkt.R.string.login)
         activity.setActionBar(myToolbar)
 
+        fingerprintButton.setOnClickListener { showFingerPrintDialog() }
+        showFingerPrintDialog()
+    }
+
+
+    private fun showFingerPrintDialog() {
         val dialog = FingerprintAuthenticationDialog.newInstance("default",
                 {
                     com.hiloislay.passmanagerkt.util.Logger.d()
@@ -45,9 +49,7 @@ class LoginFragment : BaseFragment(), LoginPresenter.FragmentProcessor {
         )
 
         dialog.show(fragmentManager, FingerprintAuthenticationDialog::javaClass.name)
-
     }
-
 
     /**
      * サブミットボタン押下時

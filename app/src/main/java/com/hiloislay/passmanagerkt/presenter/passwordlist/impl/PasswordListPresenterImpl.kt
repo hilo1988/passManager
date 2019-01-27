@@ -1,6 +1,7 @@
 package com.hiloislay.passmanagerkt.presenter.passwordlist.impl
 
 import android.content.DialogInterface
+import android.widget.Toast
 import com.hiloislay.passmanagerkt.controller.fragment.dialog.MessageDialogFragment
 import com.hiloislay.passmanagerkt.db.realm.entity.Password
 import com.hiloislay.passmanagerkt.enums.PasswordMenu
@@ -115,9 +116,11 @@ class PasswordListPresenterImpl(private val processor: PasswordListPresenter.Fra
     }
 
     private fun share(entity: Password) {
-        val sb = StringBuilder()
-                .append(entity.name)
-                .append("の情報\n")
+//        val sb = StringBuilder()
+//                .append(entity.name)
+//                .append("の情報\n")
+        Toast.makeText(processor.getContext(), "準備中です", Toast.LENGTH_SHORT)
+                .show()
     }
 
 
