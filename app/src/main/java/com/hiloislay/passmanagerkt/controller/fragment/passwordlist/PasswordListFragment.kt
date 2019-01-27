@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import com.hiloislay.passmanagerkt.R
 import com.hiloislay.passmanagerkt.controller.fragment.BaseFragment
 import com.hiloislay.passmanagerkt.controller.fragment.dialog.ListMenuDialogFragment
 import com.hiloislay.passmanagerkt.db.realm.entity.Password
@@ -45,6 +44,11 @@ class PasswordListFragment : BaseFragment(), PasswordListPresenter.FragmentProce
         }
 
         addButton.setOnClickListener { operator.showAddFragment() }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
     }
 
 

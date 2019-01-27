@@ -10,6 +10,8 @@ import io.reactivex.disposables.CompositeDisposable
 interface BasePresenter {
 
 
+    fun onDestroy() {}
+
     interface BaseFragmentProcessor {
         /**
          * トーストの表示

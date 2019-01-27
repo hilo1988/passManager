@@ -14,7 +14,8 @@ class PasswordRepositoryImpl : BaseRepositoryImpl<Password>(), PasswordRepositor
         return getRealm()
                 .where(entityClass())
                 .sort("orderByKey")
-                .findAll()
+                .findAllAsync()
+
     }
 
     override fun update(entity: Password): Single<Int> {

@@ -1,7 +1,6 @@
 package com.hiloislay.passmanagerkt.presenter.passwordlist.impl
 
 import android.content.DialogInterface
-import com.hiloislay.passmanagerkt.R
 import com.hiloislay.passmanagerkt.controller.fragment.dialog.MessageDialogFragment
 import com.hiloislay.passmanagerkt.db.realm.entity.Password
 import com.hiloislay.passmanagerkt.enums.PasswordMenu
@@ -10,19 +9,22 @@ import com.hiloislay.passmanagerkt.presenter.passwordlist.PasswordListPresenter
 import com.hiloislay.passmanagerkt.util.ContextUtils
 import com.hiloislay.passmanagerkt.util.Logger
 import com.hiloislay.passmanagerkt.valueobject.Cryptor
-import io.reactivex.Single
+import io.realm.RealmResults
 
 class PasswordListPresenterImpl(private val processor: PasswordListPresenter.FragmentProcessor) : PasswordListPresenter {
 
+    private var passwordList: RealmResults<Password>? = null
+
+    override fun onDestroy() {
+        super.onDestroy()
+        passwordList?.removeAllChangeListeners()
+    }
 
     override fun selectPasswordList() {
 
-        Single.create<List<Password>> { it.onSuccess(RepositoryHolder.passwordRepository.selectList().toList()) }
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ processor.showPasswordList(it) },
-                        {})
-                .apply { processor.getDisposable()?.add(this) }
+        passwordList = RepositoryHolder.passwordRepository.selectList()
+        passwordList?.addChangeListener { a -> Logger.w("passwordListChanged"); processor.showPasswordList(a.toList()) }
+        processor.showPasswordList(passwordList!!.toList())
 
     }
 
