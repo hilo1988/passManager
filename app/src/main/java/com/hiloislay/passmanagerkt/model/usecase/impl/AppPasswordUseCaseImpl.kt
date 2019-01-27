@@ -1,10 +1,7 @@
 package com.hiloislay.passmanagerkt.model.usecase.impl
 
 import android.content.Context
-
-import com.hiloislay.passmanagerkt.PMApplication
-import com.yoidukigembu.passmanagerkt.model.usecase.AppPasswordUseCase
-import com.hiloislay.passmanagerkt.util.Logger
+import com.hiloislay.passmanagerkt.model.usecase.AppPasswordUseCase
 import org.apache.commons.codec.binary.Hex
 import org.apache.commons.codec.digest.DigestUtils
 import org.apache.commons.lang3.RandomStringUtils
@@ -46,7 +43,7 @@ class AppPasswordUseCaseImpl : AppPasswordUseCase {
      * @param str ソルトする文字列
      * @return ソルト化した文字列
      */
-    private fun salt(str:String) = String(Hex.encodeHex(DigestUtils.sha512(getSalt() + str)))
+    private fun salt(str: String) = String(Hex.encodeHex(DigestUtils.sha512(getSalt() + str)))
 
     /**
      * ソルトの取得

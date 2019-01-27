@@ -1,13 +1,13 @@
-package com.yoidukigembu.passmanagerkt.controller.activity
+package com.hiloislay.passmanagerkt.controller.activity
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.controller.fragment.passwordinput.PasswordInputFragment
-import com.yoidukigembu.passmanagerkt.controller.fragment.passwordlist.PasswordDetailFragment
-import com.yoidukigembu.passmanagerkt.controller.fragment.passwordlist.PasswordListFragment
-import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
+import com.hiloislay.passmanagerkt.R
+import com.hiloislay.passmanagerkt.controller.fragment.passwordinput.PasswordInputFragment
+import com.hiloislay.passmanagerkt.controller.fragment.passwordlist.PasswordDetailFragment
+import com.hiloislay.passmanagerkt.controller.fragment.passwordlist.PasswordListFragment
+import com.hiloislay.passmanagerkt.db.realm.entity.Password
 
 class PasswordListActivity : BaseActivity(), PasswordListFragment.ActivityOperator,
         PasswordInputFragment.ActivityOperator, PasswordDetailFragment.ActivityOperator {
@@ -17,10 +17,10 @@ class PasswordListActivity : BaseActivity(), PasswordListFragment.ActivityOperat
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_password_list)
+        setContentView(com.hiloislay.passmanagerkt.R.layout.activity_password_list)
 
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PasswordListFragment.newInstance(this), fragmentTag)
+                .replace(com.hiloislay.passmanagerkt.R.id.container, PasswordListFragment.newInstance(this), fragmentTag)
                 .commit()
     }
 
@@ -47,7 +47,7 @@ class PasswordListActivity : BaseActivity(), PasswordListFragment.ActivityOperat
     override fun showDetailFragment(entity: Password) {
         val f = PasswordDetailFragment.getInstance(entity, this)
         fragmentManager.beginTransaction()
-                .replace(R.id.container, f, fragmentTag)
+                .replace(com.hiloislay.passmanagerkt.R.id.container, f, fragmentTag)
                 .addToBackStack("")
                 .commit()
     }

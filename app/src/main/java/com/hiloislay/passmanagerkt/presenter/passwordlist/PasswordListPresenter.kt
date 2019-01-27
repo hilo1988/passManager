@@ -1,8 +1,8 @@
-package com.yoidukigembu.passmanagerkt.presenter.passwordlist
+package com.hiloislay.passmanagerkt.presenter.passwordlist
 
-import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
-import com.yoidukigembu.passmanagerkt.presenter.BasePresenter
-import com.yoidukigembu.passmanagerkt.valueobject.MenuData
+import com.hiloislay.passmanagerkt.db.realm.entity.Password
+import com.hiloislay.passmanagerkt.presenter.BasePresenter
+import com.hiloislay.passmanagerkt.valueobject.MenuData
 
 /**
  * パスワード一覧プレゼンタ

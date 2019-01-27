@@ -1,12 +1,12 @@
-package com.yoidukigembu.passmanagerkt.presenter.passwordlist.impl
+package com.hiloislay.passmanagerkt.presenter.passwordlist.impl
 
-import com.yoidukigembu.passmanagerkt.model.holder.RepositoryHolder
-import com.yoidukigembu.passmanagerkt.model.usecase.PasswordUseCase
-import com.yoidukigembu.passmanagerkt.model.usecase.impl.PasswordUseCaseImpl
-import com.yoidukigembu.passmanagerkt.presenter.BasePasswordPresenter
-import com.yoidukigembu.passmanagerkt.presenter.EditPasswordPresenter
-import com.yoidukigembu.passmanagerkt.presenter.impl.BasePasswordPresenterImpl
-import com.yoidukigembu.passmanagerkt.util.Logger
+import com.hiloislay.passmanagerkt.model.holder.RepositoryHolder
+import com.hiloislay.passmanagerkt.model.usecase.PasswordUseCase
+import com.hiloislay.passmanagerkt.model.usecase.impl.PasswordUseCaseImpl
+import com.hiloislay.passmanagerkt.presenter.BasePasswordPresenter
+import com.hiloislay.passmanagerkt.presenter.EditPasswordPresenter
+import com.hiloislay.passmanagerkt.presenter.impl.BasePasswordPresenterImpl
+import com.hiloislay.passmanagerkt.util.Logger
 
 class EditPasswordPresenterImpl(val processor: EditPasswordPresenter.FragmentProcessor) : BasePasswordPresenterImpl(), EditPasswordPresenter {
 
@@ -17,16 +17,16 @@ class EditPasswordPresenterImpl(val processor: EditPasswordPresenter.FragmentPro
     }
 
     override fun selectData(id: Long) {
-        Logger.d("%s", id)
+        com.hiloislay.passmanagerkt.util.Logger.d("%s", id)
         val data = RepositoryHolder.passwordRepository.findById(id)
-        Logger.d("%s", data)
+        com.hiloislay.passmanagerkt.util.Logger.d("%s", data)
         data?.let { processor.setInputData(it) }
 
 
     }
 
     override fun save() {
-        Logger.d()
+        com.hiloislay.passmanagerkt.util.Logger.d()
         val validateMessage = validate()
         if (!validateMessage.isNullOrBlank()) {
             processor.showToast(validateMessage!!)

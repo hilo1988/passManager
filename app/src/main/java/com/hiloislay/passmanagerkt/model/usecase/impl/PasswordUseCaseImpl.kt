@@ -1,11 +1,11 @@
-package com.yoidukigembu.passmanagerkt.model.usecase.impl
+package com.hiloislay.passmanagerkt.model.usecase.impl
 
-import com.yoidukigembu.passmanagerkt.accessor.PasswordDataAccessor
-import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
-import com.yoidukigembu.passmanagerkt.model.holder.RepositoryHolder
-import com.yoidukigembu.passmanagerkt.model.usecase.PasswordUseCase
-import com.yoidukigembu.passmanagerkt.util.Logger
-import com.yoidukigembu.passmanagerkt.valueobject.Cryptor
+import com.hiloislay.passmanagerkt.accessor.PasswordDataAccessor
+import com.hiloislay.passmanagerkt.db.realm.entity.Password
+import com.hiloislay.passmanagerkt.model.holder.RepositoryHolder
+import com.hiloislay.passmanagerkt.model.usecase.PasswordUseCase
+import com.hiloislay.passmanagerkt.util.Logger
+import com.hiloislay.passmanagerkt.valueobject.Cryptor
 import io.reactivex.Single
 import io.realm.Realm
 
@@ -33,11 +33,11 @@ class PasswordUseCaseImpl : PasswordUseCase {
         Realm.getDefaultInstance()
                 .executeTransaction { realm ->
                     val id = accessor.getPrimaryId()
-                    Logger.w("primaryId:%s", id)
+                    com.hiloislay.passmanagerkt.util.Logger.w("primaryId:%s", id)
                     id?.let { pId ->
-                        Logger.w("piD:%s", pId)
+                        com.hiloislay.passmanagerkt.util.Logger.w("piD:%s", pId)
                         RepositoryHolder.passwordRepository.findById(pId)?.let { entity ->
-                            Logger.w("entity:%s", entity)
+                            com.hiloislay.passmanagerkt.util.Logger.w("entity:%s", entity)
                             val cryptor = Cryptor.getInstance()
                             entity.name = accessor.getLabelName() ?: ""
                             entity.loginId = accessor.getLoginId() ?: ""

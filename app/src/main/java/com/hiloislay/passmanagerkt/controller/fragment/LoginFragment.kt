@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.hiloislay.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.controller.fragment.dialog.FingerprintAuthenticationDialog
-import com.yoidukigembu.passmanagerkt.presenter.LoginPresenter
-import com.yoidukigembu.passmanagerkt.presenter.PresenterFactory
+import com.hiloislay.passmanagerkt.controller.fragment.dialog.FingerprintAuthenticationDialog
+import com.hiloislay.passmanagerkt.presenter.LoginPresenter
+import com.hiloislay.passmanagerkt.presenter.PresenterFactory
 import com.hiloislay.passmanagerkt.util.Logger
 import kotlinx.android.synthetic.main.fragment_app_password.*
 import kotlinx.android.synthetic.main.toolbar.*

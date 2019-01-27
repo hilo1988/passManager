@@ -1,13 +1,13 @@
-package com.yoidukigembu.passmanagerkt.controller.fragment
+package com.hiloislay.passmanagerkt.controller.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.presenter.AppPasswordPresenter
-import com.yoidukigembu.passmanagerkt.presenter.PresenterFactory
+import com.hiloislay.passmanagerkt.R
+import com.hiloislay.passmanagerkt.presenter.AppPasswordPresenter
+import com.hiloislay.passmanagerkt.presenter.PresenterFactory
 import kotlinx.android.synthetic.main.fragment_app_password.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -18,7 +18,7 @@ class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentP
     private val presenter = PresenterFactory.getAppPasswordPresenter(this)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val v = inflater?.inflate(R.layout.fragment_app_password, null)
+        val v = inflater?.inflate(com.hiloislay.passmanagerkt.R.layout.fragment_app_password, null)
 
 
         return v!!
@@ -32,20 +32,20 @@ class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentP
                     passwordConfEdit.text.toString())
         }
 
-        myToolbar.setTitle(R.string.app_password_registration)
+        myToolbar.setTitle(com.hiloislay.passmanagerkt.R.string.app_password_registration)
         activity.setActionBar(myToolbar)
 
-        submitButton.setText(R.string.submit)
+        submitButton.setText(com.hiloislay.passmanagerkt.R.string.submit)
 
     }
 
     override fun onPasswordCreated() {
-        Toast.makeText(context, R.string.app_password_is_registered, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, com.hiloislay.passmanagerkt.R.string.app_password_is_registered, Toast.LENGTH_SHORT).show()
         operator?.showLogin()
     }
 
     override fun onPasswordCreateFailure() {
-        Toast.makeText(context, R.string.error_passwordCreateFailed, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, com.hiloislay.passmanagerkt.R.string.error_passwordCreateFailed, Toast.LENGTH_SHORT).show()
     }
 
     override fun showError(msg: String) {

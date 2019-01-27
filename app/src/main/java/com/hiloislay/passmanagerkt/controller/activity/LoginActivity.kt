@@ -1,12 +1,10 @@
-package com.yoidukigembu.passmanagerkt.controller.activity
+package com.hiloislay.passmanagerkt.controller.activity
 
 import android.content.Intent
 import android.os.Bundle
-import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.controller.fragment.CreateAppPasswordFragment
-import com.yoidukigembu.passmanagerkt.controller.fragment.LoginFragment
-import com.yoidukigembu.passmanagerkt.model.usecase.impl.AppPasswordUseCaseImpl
-import com.yoidukigembu.passmanagerkt.util.Logger
+import com.hiloislay.passmanagerkt.controller.fragment.CreateAppPasswordFragment
+import com.hiloislay.passmanagerkt.controller.fragment.LoginFragment
+import com.hiloislay.passmanagerkt.model.usecase.impl.AppPasswordUseCaseImpl
 
 class LoginActivity : BaseActivity(), LoginFragment.ActivityOperator, CreateAppPasswordFragment.ActivityOperator {
 
@@ -14,7 +12,7 @@ class LoginActivity : BaseActivity(), LoginFragment.ActivityOperator, CreateAppP
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(com.hiloislay.passmanagerkt.R.layout.activity_login)
 
         val fragment =
                 if (!passwordUseCase.existsAppPassword())
@@ -23,18 +21,18 @@ class LoginActivity : BaseActivity(), LoginFragment.ActivityOperator, CreateAppP
                     LoginFragment.getInstance(this)
 
         fragmentManager.beginTransaction()
-                .replace(R.id.container, fragment)
+                .replace(com.hiloislay.passmanagerkt.R.id.container, fragment)
                 .commit()
     }
 
     override fun showLogin() {
         fragmentManager.beginTransaction()
-                .replace(R.id.container, LoginFragment.getInstance(this))
+                .replace(com.hiloislay.passmanagerkt.R.id.container, LoginFragment.getInstance(this))
                 .commit()
     }
 
     override fun onLogin() {
-        Logger.v()
+        com.hiloislay.passmanagerkt.util.Logger.v()
         startActivity(Intent(this, PasswordListActivity::class.java))
     }
 }

@@ -1,6 +1,6 @@
-package com.yoidukigembu.passmanagerkt.model.usecase
+package com.hiloislay.passmanagerkt.model.usecase
 
-import com.yoidukigembu.passmanagerkt.accessor.PasswordDataAccessor
+import com.hiloislay.passmanagerkt.accessor.PasswordDataAccessor
 import io.reactivex.Single
 
 

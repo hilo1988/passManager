@@ -1,7 +1,7 @@
-package com.yoidukigembu.passmanagerkt.db.realm.repository
+package com.hiloislay.passmanagerkt.db.realm.repository
 
 
-import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
+import com.hiloislay.passmanagerkt.db.realm.entity.Password
 import io.reactivex.Single
 import io.realm.RealmResults
 

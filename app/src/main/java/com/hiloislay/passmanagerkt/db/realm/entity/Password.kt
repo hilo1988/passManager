@@ -1,7 +1,7 @@
-package com.yoidukigembu.passmanagerkt.db.realm.entity
+package com.hiloislay.passmanagerkt.db.realm.entity
 
-import com.yoidukigembu.passmanagerkt.accessor.PasswordDataAccessor
-import com.yoidukigembu.passmanagerkt.valueobject.Cryptor
+import com.hiloislay.passmanagerkt.accessor.PasswordDataAccessor
+import com.hiloislay.passmanagerkt.valueobject.Cryptor
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 

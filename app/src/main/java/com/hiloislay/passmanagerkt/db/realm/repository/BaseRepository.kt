@@ -1,4 +1,4 @@
-package com.yoidukigembu.passmanagerkt.db.realm.repository
+package com.hiloislay.passmanagerkt.db.realm.repository
 
 import io.realm.RealmObject
 

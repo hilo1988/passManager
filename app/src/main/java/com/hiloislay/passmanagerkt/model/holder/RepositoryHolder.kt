@@ -1,7 +1,7 @@
-package com.yoidukigembu.passmanagerkt.model.holder
+package com.hiloislay.passmanagerkt.model.holder
 
-import com.yoidukigembu.passmanagerkt.db.realm.repository.PasswordRepository
-import com.yoidukigembu.passmanagerkt.db.realm.repository.impl.PasswordRepositoryImpl
+import com.hiloislay.passmanagerkt.db.realm.repository.PasswordRepository
+import com.hiloislay.passmanagerkt.db.realm.repository.impl.PasswordRepositoryImpl
 
 
 /**

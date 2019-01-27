@@ -1,4 +1,4 @@
-package com.yoidukigembu.passmanagerkt.accessor
+package com.hiloislay.passmanagerkt.accessor
 
 interface PasswordDataAccessor {
 

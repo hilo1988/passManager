@@ -1,7 +1,7 @@
-package com.yoidukigembu.passmanagerkt.controller.fragment.passwordinput
+package com.hiloislay.passmanagerkt.controller.fragment.passwordinput
 
-import com.yoidukigembu.passmanagerkt.controller.fragment.BaseFragment
-import com.yoidukigembu.passmanagerkt.presenter.BasePasswordPresenter
+import com.hiloislay.passmanagerkt.controller.fragment.BaseFragment
+import com.hiloislay.passmanagerkt.presenter.BasePasswordPresenter
 import kotlinx.android.synthetic.main.fragment_password_input.*
 
 abstract class BaseInputPasswordFragment : BaseFragment(), BasePasswordPresenter.BasePasswordFragmentProcessor {

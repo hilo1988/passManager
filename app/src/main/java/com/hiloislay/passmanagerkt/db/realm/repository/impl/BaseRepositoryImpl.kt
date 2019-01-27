@@ -1,6 +1,6 @@
-package com.yoidukigembu.passmanagerkt.db.realm.repository.impl
+package com.hiloislay.passmanagerkt.db.realm.repository.impl
 
-import com.yoidukigembu.passmanagerkt.db.realm.repository.BaseRepository
+import com.hiloislay.passmanagerkt.db.realm.repository.BaseRepository
 import io.realm.Realm
 import io.realm.RealmObject
 

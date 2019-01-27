@@ -1,4 +1,4 @@
-package com.yoidukigembu.passmanagerkt.model.usecase
+package com.hiloislay.passmanagerkt.model.usecase
 
 /**
  * アプリ本体のパスワード用useCase
@@ -12,7 +12,7 @@ interface AppPasswordUseCase {
      * @param password 保存するパスワード(未暗号化
      * @return 保存に成功した場合にtrue
      */
-    fun save(password:String) : Boolean
+    fun save(password: String): Boolean
 
     /**
      * アプリパスワードが保存されているかどうか
@@ -26,5 +26,5 @@ interface AppPasswordUseCase {
      * @param password パスワード(未暗号化
      * @return 一致する場合にtrue
      */
-    fun isSamePassword(password: String) : Boolean
+    fun isSamePassword(password: String): Boolean
 }

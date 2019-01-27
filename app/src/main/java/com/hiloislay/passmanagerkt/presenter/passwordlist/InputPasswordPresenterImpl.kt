@@ -1,11 +1,11 @@
-package com.yoidukigembu.passmanagerkt.presenter.passwordlist
+package com.hiloislay.passmanagerkt.presenter.passwordlist
 
-import com.yoidukigembu.passmanagerkt.model.usecase.PasswordUseCase
-import com.yoidukigembu.passmanagerkt.model.usecase.impl.PasswordUseCaseImpl
-import com.yoidukigembu.passmanagerkt.presenter.BasePasswordPresenter
-import com.yoidukigembu.passmanagerkt.presenter.InputPasswordPresenter
-import com.yoidukigembu.passmanagerkt.presenter.impl.BasePasswordPresenterImpl
-import com.yoidukigembu.passmanagerkt.util.Logger
+import com.hiloislay.passmanagerkt.model.usecase.PasswordUseCase
+import com.hiloislay.passmanagerkt.model.usecase.impl.PasswordUseCaseImpl
+import com.hiloislay.passmanagerkt.presenter.BasePasswordPresenter
+import com.hiloislay.passmanagerkt.presenter.InputPasswordPresenter
+import com.hiloislay.passmanagerkt.presenter.impl.BasePasswordPresenterImpl
+import com.hiloislay.passmanagerkt.util.Logger
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -18,7 +18,7 @@ class InputPasswordPresenterImpl(val processor: InputPasswordPresenter.FragmentP
     }
 
     override fun save() {
-        Logger.d()
+        com.hiloislay.passmanagerkt.util.Logger.d()
         val validateMessage = validate()
         if (!validateMessage.isNullOrBlank()) {
             processor.showToast(validateMessage!!)

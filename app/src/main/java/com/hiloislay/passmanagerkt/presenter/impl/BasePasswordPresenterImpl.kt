@@ -1,9 +1,9 @@
-package com.yoidukigembu.passmanagerkt.presenter.impl
+package com.hiloislay.passmanagerkt.presenter.impl
 
-import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.controller.fragment.dialog.PasswordGeneratorDialogFragment
-import com.yoidukigembu.passmanagerkt.presenter.BasePasswordPresenter
-import com.yoidukigembu.passmanagerkt.util.ContextUtils
+import com.hiloislay.passmanagerkt.R
+import com.hiloislay.passmanagerkt.controller.fragment.dialog.PasswordGeneratorDialogFragment
+import com.hiloislay.passmanagerkt.presenter.BasePasswordPresenter
+import com.hiloislay.passmanagerkt.util.ContextUtils
 import io.reactivex.Single
 import io.reactivex.SingleEmitter
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -54,11 +54,11 @@ abstract class BasePasswordPresenterImpl : BasePresenterImpl(), BasePasswordPres
     fun validate(): String? {
         val processor = getProcessor()
         if (processor.getLoginId().isNullOrBlank()) {
-            return ContextUtils.formatString(R.string.error_required, R.string.labelName)
+            return ContextUtils.formatString(com.hiloislay.passmanagerkt.R.string.error_required, com.hiloislay.passmanagerkt.R.string.labelName)
         }
 
         if (processor.getPassword1().isNullOrBlank()) {
-            return ContextUtils.formatString(R.string.error_required, R.string.password)
+            return ContextUtils.formatString(com.hiloislay.passmanagerkt.R.string.error_required, com.hiloislay.passmanagerkt.R.string.password)
         }
 
         return null

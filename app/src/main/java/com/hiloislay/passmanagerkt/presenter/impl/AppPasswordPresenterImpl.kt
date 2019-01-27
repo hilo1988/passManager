@@ -1,9 +1,9 @@
-package com.yoidukigembu.passmanagerkt.presenter.impl
+package com.hiloislay.passmanagerkt.presenter.impl
 
-import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.model.usecase.impl.AppPasswordUseCaseImpl
-import com.yoidukigembu.passmanagerkt.presenter.AppPasswordPresenter
-import com.yoidukigembu.passmanagerkt.util.ContextUtils
+import com.hiloislay.passmanagerkt.R
+import com.hiloislay.passmanagerkt.model.usecase.impl.AppPasswordUseCaseImpl
+import com.hiloislay.passmanagerkt.presenter.AppPasswordPresenter
+import com.hiloislay.passmanagerkt.util.ContextUtils
 
 class AppPasswordPresenterImpl(private val processor: AppPasswordPresenter.FragmentProcessor) : AppPasswordPresenter {
 
@@ -27,16 +27,16 @@ class AppPasswordPresenterImpl(private val processor: AppPasswordPresenter.Fragm
     private fun validate(password: String, passwordConf: String): Boolean {
         if (password.length < PASSWORD_LENGTH) {
             processor.showError(
-                    ContextUtils.formatString(R.string.error_required, R.string.password))
+                    ContextUtils.formatString(com.hiloislay.passmanagerkt.R.string.error_required, com.hiloislay.passmanagerkt.R.string.password))
             return false
         }
 
         if (password != passwordConf) {
             processor.showError(
                     ContextUtils.formatString(
-                            R.string.error_notEquals,
-                            R.string.password,
-                            R.string.passwordConf))
+                            com.hiloislay.passmanagerkt.R.string.error_notEquals,
+                            com.hiloislay.passmanagerkt.R.string.password,
+                            com.hiloislay.passmanagerkt.R.string.passwordConf))
             return false
         }
 

@@ -1,4 +1,4 @@
-package com.yoidukigembu.passmanagerkt.controller.fragment.dialog
+package com.hiloislay.passmanagerkt.controller.fragment.dialog
 
 import android.annotation.TargetApi
 import android.app.DialogFragment
@@ -12,9 +12,9 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
-import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.model.helper.FingerprintUiHelper
-import com.yoidukigembu.passmanagerkt.model.holder.KeyStoreHolder
+import com.hiloislay.passmanagerkt.R
+import com.hiloislay.passmanagerkt.model.helper.FingerprintUiHelper
+import com.hiloislay.passmanagerkt.model.holder.KeyStoreHolder
 import kotlinx.android.synthetic.main.fingerprint_dialog_backup.*
 import kotlinx.android.synthetic.main.fingerprint_dialog_container.*
 import kotlinx.android.synthetic.main.fingerprint_dialog_content.*
@@ -51,10 +51,10 @@ class FingerprintAuthenticationDialog : DialogFragment(), TextView.OnEditorActio
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        dialog.setTitle(getString(R.string.sign_in))
+        dialog.setTitle(getString(com.hiloislay.passmanagerkt.R.string.sign_in))
 
 
-        return inflater.inflate(R.layout.fingerprint_dialog_container, container, false)
+        return inflater.inflate(com.hiloislay.passmanagerkt.R.layout.fingerprint_dialog_container, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -153,16 +153,16 @@ class FingerprintAuthenticationDialog : DialogFragment(), TextView.OnEditorActio
     private fun updateStage() {
         when (mStage) {
             FingerprintAuthenticationDialog.Stage.FINGERPRINT -> {
-                cancel_button!!.setText(R.string.cancel)
-                second_dialog_button!!.setText(R.string.use_password)
+                cancel_button!!.setText(com.hiloislay.passmanagerkt.R.string.cancel)
+                second_dialog_button!!.setText(com.hiloislay.passmanagerkt.R.string.use_password)
                 fingerprint_container!!.visibility = View.VISIBLE
                 backup_container!!.visibility = View.GONE
             }
             FingerprintAuthenticationDialog.Stage.NEW_FINGERPRINT_ENROLLED,
                 // Intentional fall through
             FingerprintAuthenticationDialog.Stage.PASSWORD -> {
-                cancel_button!!.setText(R.string.cancel)
-                second_dialog_button!!.setText(R.string.ok)
+                cancel_button!!.setText(com.hiloislay.passmanagerkt.R.string.cancel)
+                second_dialog_button!!.setText(com.hiloislay.passmanagerkt.R.string.ok)
                 fingerprint_container!!.visibility = View.GONE
                 backup_container!!.visibility = View.VISIBLE
                 if (mStage == Stage.NEW_FINGERPRINT_ENROLLED) {

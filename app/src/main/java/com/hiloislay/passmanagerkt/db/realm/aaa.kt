@@ -1,2 +1,2 @@
-package com.yoidukigembu.passmanagerkt.db.realm
+package com.hiloislay.passmanagerkt.db.realm
 

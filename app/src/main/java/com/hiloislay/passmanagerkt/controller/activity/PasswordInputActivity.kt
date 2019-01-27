@@ -1,16 +1,16 @@
-package com.yoidukigembu.passmanagerkt.controller.activity
+package com.hiloislay.passmanagerkt.controller.activity
 
 import android.app.Fragment
 import android.os.Bundle
-import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.controller.fragment.passwordinput.PasswordEditFragment
-import com.yoidukigembu.passmanagerkt.controller.fragment.passwordinput.PasswordInputFragment
+import com.hiloislay.passmanagerkt.R
+import com.hiloislay.passmanagerkt.controller.fragment.passwordinput.PasswordEditFragment
+import com.hiloislay.passmanagerkt.controller.fragment.passwordinput.PasswordInputFragment
 
 class PasswordInputActivity : BaseActivity(), PasswordInputFragment.ActivityOperator, PasswordEditFragment.ActivityOperator {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_password_input)
+        setContentView(com.hiloislay.passmanagerkt.R.layout.activity_password_input)
 
         val inputType = intent.extras.getInt(KEY_INPUT_TYPE)
 
@@ -29,7 +29,7 @@ class PasswordInputActivity : BaseActivity(), PasswordInputFragment.ActivityOper
         }
 
         fragmentManager.beginTransaction()
-                .replace(R.id.container, f)
+                .replace(com.hiloislay.passmanagerkt.R.id.container, f)
                 .commit()
     }
 

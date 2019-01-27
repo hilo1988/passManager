@@ -1,4 +1,4 @@
-package com.yoidukigembu.passmanagerkt.exception
+package com.hiloislay.passmanagerkt.exception
 
 /**
  * バリデート用例外

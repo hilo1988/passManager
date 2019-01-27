@@ -1,4 +1,4 @@
-package com.yoidukigembu.passmanagerkt.controller.fragment.dialog
+package com.hiloislay.passmanagerkt.controller.fragment.dialog
 
 import android.app.AlertDialog
 import android.app.Dialog

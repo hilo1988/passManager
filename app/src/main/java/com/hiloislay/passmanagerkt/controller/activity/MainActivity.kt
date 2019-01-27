@@ -1,4 +1,4 @@
-package com.yoidukigembu.passmanagerkt.controller.activity
+package com.hiloislay.passmanagerkt.controller.activity
 
 import android.content.Intent
 

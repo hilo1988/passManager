@@ -1,6 +1,6 @@
 package com.hiloislay.passmanagerkt.presenter.impl
 
-import com.yoidukigembu.passmanagerkt.presenter.BasePresenter
+import com.hiloislay.passmanagerkt.presenter.BasePresenter
 
 open class BasePresenterImpl : BasePresenter {
 }

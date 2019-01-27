@@ -1,6 +1,6 @@
-package com.yoidukigembu.passmanagerkt.presenter.passwordlist
+package com.hiloislay.passmanagerkt.presenter.passwordlist
 
-import com.yoidukigembu.passmanagerkt.presenter.BasePresenter
+import com.hiloislay.passmanagerkt.presenter.BasePresenter
 
 interface AddPresenter : BasePresenter {
 

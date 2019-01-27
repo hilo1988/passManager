@@ -1,19 +1,19 @@
-package com.yoidukigembu.passmanagerkt.controller.fragment.passwordlist
+package com.hiloislay.passmanagerkt.controller.fragment.passwordlist
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.controller.fragment.BaseFragment
-import com.yoidukigembu.passmanagerkt.controller.fragment.dialog.ListMenuDialogFragment
-import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
-import com.yoidukigembu.passmanagerkt.model.holder.SubjectHolder
-import com.yoidukigembu.passmanagerkt.presenter.passwordlist.PasswordListPresenter
-import com.yoidukigembu.passmanagerkt.presenter.passwordlist.impl.PasswordListPresenterImpl
-import com.yoidukigembu.passmanagerkt.valueobject.MenuData
-import com.yoidukigembu.passmanagerkt.view.adapter.PasswordAdapter
+import com.hiloislay.passmanagerkt.R
+import com.hiloislay.passmanagerkt.controller.fragment.BaseFragment
+import com.hiloislay.passmanagerkt.controller.fragment.dialog.ListMenuDialogFragment
+import com.hiloislay.passmanagerkt.db.realm.entity.Password
+import com.hiloislay.passmanagerkt.model.holder.SubjectHolder
+import com.hiloislay.passmanagerkt.presenter.passwordlist.PasswordListPresenter
+import com.hiloislay.passmanagerkt.presenter.passwordlist.impl.PasswordListPresenterImpl
+import com.hiloislay.passmanagerkt.valueobject.MenuData
+import com.hiloislay.passmanagerkt.view.adapter.PasswordAdapter
 import kotlinx.android.synthetic.main.fragment_password_list.*
 
 /**
@@ -31,7 +31,7 @@ class PasswordListFragment : BaseFragment(), PasswordListPresenter.FragmentProce
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val view = inflater?.inflate(R.layout.fragment_password_list, null)
+        val view = inflater?.inflate(com.hiloislay.passmanagerkt.R.layout.fragment_password_list, null)
         return view!!
     }
 

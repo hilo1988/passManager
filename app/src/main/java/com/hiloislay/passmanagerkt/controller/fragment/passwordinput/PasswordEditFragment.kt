@@ -1,15 +1,15 @@
-package com.yoidukigembu.passmanagerkt.controller.fragment.passwordinput
+package com.hiloislay.passmanagerkt.controller.fragment.passwordinput
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
-import com.yoidukigembu.passmanagerkt.presenter.BasePasswordPresenter
-import com.yoidukigembu.passmanagerkt.presenter.EditPasswordPresenter
-import com.yoidukigembu.passmanagerkt.presenter.passwordlist.impl.EditPasswordPresenterImpl
-import com.yoidukigembu.passmanagerkt.valueobject.Cryptor
+import com.hiloislay.passmanagerkt.R
+import com.hiloislay.passmanagerkt.db.realm.entity.Password
+import com.hiloislay.passmanagerkt.presenter.BasePasswordPresenter
+import com.hiloislay.passmanagerkt.presenter.EditPasswordPresenter
+import com.hiloislay.passmanagerkt.presenter.passwordlist.impl.EditPasswordPresenterImpl
+import com.hiloislay.passmanagerkt.valueobject.Cryptor
 import kotlinx.android.synthetic.main.fragment_password_input.*
 
 class PasswordEditFragment : BaseInputPasswordFragment(), EditPasswordPresenter.FragmentProcessor {
@@ -22,7 +22,7 @@ class PasswordEditFragment : BaseInputPasswordFragment(), EditPasswordPresenter.
     private val presenter: EditPasswordPresenter = EditPasswordPresenterImpl(this)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val view = inflater?.inflate(R.layout.fragment_password_input, null)
+        val view = inflater?.inflate(com.hiloislay.passmanagerkt.R.layout.fragment_password_input, null)
         return view!!
     }
 

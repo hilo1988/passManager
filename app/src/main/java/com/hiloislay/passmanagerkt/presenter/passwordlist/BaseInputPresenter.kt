@@ -1,7 +1,7 @@
-package com.yoidukigembu.passmanagerkt.presenter.passwordlist
+package com.hiloislay.passmanagerkt.presenter.passwordlist
 
-import com.yoidukigembu.passmanagerkt.presenter.BasePresenter
-import com.yoidukigembu.passmanagerkt.valueobject.RegisterData
+import com.hiloislay.passmanagerkt.presenter.BasePresenter
+import com.hiloislay.passmanagerkt.valueobject.RegisterData
 
 interface BaseInputPresenter : BasePresenter {
 

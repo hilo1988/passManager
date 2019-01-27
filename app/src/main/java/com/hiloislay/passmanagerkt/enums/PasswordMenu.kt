@@ -1,23 +1,23 @@
-package com.yoidukigembu.passmanagerkt.enums
+package com.hiloislay.passmanagerkt.enums
 
-import com.yoidukigembu.passmanagerkt.PMApplication
-import com.yoidukigembu.passmanagerkt.R
-import com.yoidukigembu.passmanagerkt.accessor.MenuDataAccessor
-import com.yoidukigembu.passmanagerkt.db.realm.entity.Password
-import com.yoidukigembu.passmanagerkt.valueobject.MenuData
+import com.hiloislay.passmanagerkt.PMApplication
+import com.hiloislay.passmanagerkt.R
+import com.hiloislay.passmanagerkt.accessor.MenuDataAccessor
+import com.hiloislay.passmanagerkt.db.realm.entity.Password
+import com.hiloislay.passmanagerkt.valueobject.MenuData
 
 enum class PasswordMenu(val id: Long, val stringResId: Int) : MenuDataAccessor {
 
-    SHOW_DETAIL(1, R.string.showDetail),
-    SEND_MAIL(2, R.string.sendMail),
-    OPEN_LOGIN_URL(3, R.string.openLoginUrl),
-    COPY_LOGIN_ID(4, R.string.copyLoginId),
-    COPY_PASSWORD1(5, R.string.copyPassword1),
-    COPY_PASSWORD2(6, R.string.copyPassword2),
-    EDIT(7, R.string.edit),
-    DELETE(8, R.string.delete);
+    SHOW_DETAIL(1, com.hiloislay.passmanagerkt.R.string.showDetail),
+    SEND_MAIL(2, com.hiloislay.passmanagerkt.R.string.sendMail),
+    OPEN_LOGIN_URL(3, com.hiloislay.passmanagerkt.R.string.openLoginUrl),
+    COPY_LOGIN_ID(4, com.hiloislay.passmanagerkt.R.string.copyLoginId),
+    COPY_PASSWORD1(5, com.hiloislay.passmanagerkt.R.string.copyPassword1),
+    COPY_PASSWORD2(6, com.hiloislay.passmanagerkt.R.string.copyPassword2),
+    EDIT(7, com.hiloislay.passmanagerkt.R.string.edit),
+    DELETE(8, com.hiloislay.passmanagerkt.R.string.delete);
 
-    fun getString() = PMApplication.getContext().getString(stringResId)
+    fun getString() = com.hiloislay.passmanagerkt.PMApplication.getContext().getString(stringResId)
 
     override fun getMenuId(): Long = id
 
