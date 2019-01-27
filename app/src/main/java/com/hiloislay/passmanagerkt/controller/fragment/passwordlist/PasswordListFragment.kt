@@ -40,7 +40,12 @@ class PasswordListFragment : BaseFragment(), PasswordListPresenter.FragmentProce
         presenter.selectPasswordList()
 
         passwordListView.onItemClickListener = AdapterView.OnItemClickListener { _, _, _, id ->
+            presenter.copyPassword(id)
+        }
+
+        passwordListView.onItemLongClickListener = AdapterView.OnItemLongClickListener { _, _, _, id ->
             presenter.onListItemClicked(id)
+            true
         }
 
         addButton.setOnClickListener { operator.showAddFragment() }

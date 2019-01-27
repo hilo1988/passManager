@@ -61,6 +61,15 @@ class PasswordListPresenterImpl(private val processor: PasswordListPresenter.Fra
                 com.hiloislay.passmanagerkt.R.string.loginId))
     }
 
+    override fun copyPassword(id: Long) {
+        RepositoryHolder.passwordRepository
+                .findById(id)
+                .let {
+                    it?.password1?.apply {
+                        copyPassword(Cryptor.getInstance().decrypt(this))
+                    }
+                }
+    }
 
     /**
      * パスワードコピー

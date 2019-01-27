@@ -27,6 +27,11 @@ interface PasswordListPresenter : BasePresenter {
     fun onMenuSelected(id: Long, password: Password)
 
     /**
+     * パスワードコピー
+     */
+    fun copyPassword(id: Long)
+
+    /**
      * フラグメント処理のI/F
      */
     interface FragmentProcessor : BasePresenter.BaseFragmentProcessor {
