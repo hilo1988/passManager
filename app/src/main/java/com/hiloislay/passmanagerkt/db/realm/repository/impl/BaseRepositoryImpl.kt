@@ -3,6 +3,8 @@ package com.hiloislay.passmanagerkt.db.realm.repository.impl
 import com.hiloislay.passmanagerkt.db.realm.repository.BaseRepository
 import io.realm.Realm
 import io.realm.RealmObject
+import kotlin.reflect.KMutableProperty
+import kotlin.reflect.full.memberProperties
 
 abstract class BaseRepositoryImpl<E : RealmObject> : BaseRepository<E> {
 
@@ -17,6 +19,16 @@ abstract class BaseRepositoryImpl<E : RealmObject> : BaseRepository<E> {
     }
 
     override fun insert(entity: E) {
+        val currentMaxId = (getRealm().where(entityClass())
+                .max("id")
+                ?: 0).toLong()
+
+        val idProp = entity::class.memberProperties
+                .find { it.name == "id" }
+        if (idProp is KMutableProperty<*>) {
+            idProp.setter.call(entity, currentMaxId + 1)
+        }
+
         getRealm().insert(entity)
     }
 

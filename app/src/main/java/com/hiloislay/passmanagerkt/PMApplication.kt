@@ -11,7 +11,7 @@ class PMApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        com.hiloislay.passmanagerkt.PMApplication.Companion.self = this
+        self = this
 
 
 //        BaseRepositoryImpl.database = OrmaDatabase
@@ -38,6 +38,8 @@ class PMApplication : Application() {
 
         Realm.setDefaultConfiguration(config)
 
+//        SaveMyPass().save()
+
     }
 
 
@@ -57,12 +59,12 @@ class PMApplication : Application() {
 
     companion object {
         /** コンテキスト */
-        private var self: com.hiloislay.passmanagerkt.PMApplication? = null
+        private var self: PMApplication? = null
 
         /**
          * コンテキストの取得
          */
-        fun getContext(): Context = com.hiloislay.passmanagerkt.PMApplication.Companion.self!!
+        fun getContext(): Context = self!!
 
     }
 }

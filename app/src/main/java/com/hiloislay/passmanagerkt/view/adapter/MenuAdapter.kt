@@ -25,7 +25,7 @@ class MenuAdapter(val context: Context,
 
 
         if (convertView == null) {
-            view = View.inflate(context, com.hiloislay.passmanagerkt.R.layout.adapter_menu, null) as MenuAdapterView
+            view = View.inflate(context, R.layout.adapter_menu, null) as MenuAdapterView
         } else {
             view = convertView as MenuAdapterView
         }

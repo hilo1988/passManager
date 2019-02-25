@@ -23,78 +23,78 @@ open class BaseFragment : Fragment(), BasePresenter.BaseFragmentProcessor {
 
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)
-        com.hiloislay.passmanagerkt.util.Logger.v()
+        Logger.v()
     }
 
     override fun onResume() {
         super.onResume()
-        com.hiloislay.passmanagerkt.util.Logger.v("self:[%s]", this)
+        Logger.v("self:[%s]", this)
     }
 
 
     override fun onDetach() {
         super.onDetach()
-        com.hiloislay.passmanagerkt.util.Logger.v("self:[%s]", this)
+        Logger.v("self:[%s]", this)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
-        com.hiloislay.passmanagerkt.util.Logger.v("self:[%s]", this)
+        Logger.v("self:[%s]", this)
     }
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        com.hiloislay.passmanagerkt.util.Logger.v("self:[%s]", this)
+        Logger.v("self:[%s]", this)
     }
 
 
     override fun startActivity(intent: Intent?) {
         super.startActivity(intent)
-        com.hiloislay.passmanagerkt.util.Logger.v("self: %s Intent:%s", this, intent)
+        Logger.v("self: %s Intent:%s", this, intent)
     }
 
 
     override fun onDestroyView() {
         super.onDestroyView()
-        com.hiloislay.passmanagerkt.util.Logger.v("self:[%s]", this)
+        Logger.v("self:[%s]", this)
     }
 
     override fun onStop() {
         super.onStop()
-        com.hiloislay.passmanagerkt.util.Logger.v("self:[%s]", this)
+        Logger.v("self:[%s]", this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.cDisposable = CompositeDisposable()
-        com.hiloislay.passmanagerkt.util.Logger.v("self:[%s]", this)
+        Logger.v("self:[%s]", this)
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
-        com.hiloislay.passmanagerkt.util.Logger.v("self:[%s]", this)
+        Logger.v("self:[%s]", this)
     }
 
 
     override fun onStart() {
         super.onStart()
-        com.hiloislay.passmanagerkt.util.Logger.v("self:[%s]", this)
+        Logger.v("self:[%s]", this)
     }
 
     override fun onDestroyOptionsMenu() {
         super.onDestroyOptionsMenu()
-        com.hiloislay.passmanagerkt.util.Logger.v("self:[%s]", this)
+        Logger.v("self:[%s]", this)
     }
 
     override fun onOptionsMenuClosed(menu: Menu?) {
         super.onOptionsMenuClosed(menu)
-        com.hiloislay.passmanagerkt.util.Logger.v("self:[%s]", this)
+        Logger.v("self:[%s]", this)
     }
 
     override fun onDestroy() {
         super.onDestroy()
         cDisposable?.dispose()
-        com.hiloislay.passmanagerkt.util.Logger.v("self:[%s]", this)
+        Logger.v("self:[%s]", this)
     }
 
     override fun showDialog(dialogFragment: DialogFragment, tag: String) {

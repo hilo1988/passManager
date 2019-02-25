@@ -17,10 +17,10 @@ class PasswordListActivity : BaseActivity(), PasswordListFragment.ActivityOperat
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(com.hiloislay.passmanagerkt.R.layout.activity_password_list)
+        setContentView(R.layout.activity_password_list)
 
         fragmentManager.beginTransaction()
-                .replace(com.hiloislay.passmanagerkt.R.id.container, PasswordListFragment.newInstance(this), fragmentTag)
+                .replace(R.id.container, PasswordListFragment.newInstance(this), fragmentTag)
                 .commit()
     }
 
@@ -47,7 +47,7 @@ class PasswordListActivity : BaseActivity(), PasswordListFragment.ActivityOperat
     override fun showDetailFragment(entity: Password) {
         val f = PasswordDetailFragment.getInstance(entity, this)
         fragmentManager.beginTransaction()
-                .replace(com.hiloislay.passmanagerkt.R.id.container, f, fragmentTag)
+                .replace(R.id.container, f, fragmentTag)
                 .addToBackStack("")
                 .commit()
     }

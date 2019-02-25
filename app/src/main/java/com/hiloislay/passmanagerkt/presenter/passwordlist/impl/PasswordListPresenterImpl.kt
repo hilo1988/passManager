@@ -2,6 +2,7 @@ package com.hiloislay.passmanagerkt.presenter.passwordlist.impl
 
 import android.content.DialogInterface
 import android.widget.Toast
+import com.hiloislay.passmanagerkt.R
 import com.hiloislay.passmanagerkt.controller.fragment.dialog.MessageDialogFragment
 import com.hiloislay.passmanagerkt.db.realm.entity.Password
 import com.hiloislay.passmanagerkt.enums.PasswordMenu
@@ -30,7 +31,7 @@ class PasswordListPresenterImpl(private val processor: PasswordListPresenter.Fra
     }
 
     override fun onListItemClicked(id: Long) {
-        com.hiloislay.passmanagerkt.util.Logger.d("id: %d", id)
+        Logger.d("id: %d", id)
 
 
         RepositoryHolder.passwordRepository
@@ -58,8 +59,8 @@ class PasswordListPresenterImpl(private val processor: PasswordListPresenter.Fra
      */
     private fun copyLoginId(str: String?) {
         ContextUtils.copyToClipBoard(str)
-        processor.showToast(ContextUtils.formatString(com.hiloislay.passmanagerkt.R.string.format_copy,
-                com.hiloislay.passmanagerkt.R.string.loginId))
+        processor.showToast(ContextUtils.formatString(R.string.format_copy,
+                R.string.loginId))
     }
 
     override fun copyPassword(id: Long) {
@@ -78,23 +79,23 @@ class PasswordListPresenterImpl(private val processor: PasswordListPresenter.Fra
     private fun copyPassword(str: String?) {
         ContextUtils.copyToClipBoard(str)
 
-        processor.showToast(ContextUtils.formatString(com.hiloislay.passmanagerkt.R.string.format_copy,
-                com.hiloislay.passmanagerkt.R.string.password))
+        processor.showToast(ContextUtils.formatString(R.string.format_copy,
+                R.string.password))
     }
 
     /**
      * 削除ダイアログの表示
      */
     private fun showDeleteDialog(entity: Password) {
-        val format = processor.getContext().getString(com.hiloislay.passmanagerkt.R.string.format_confirmDelete)
+        val format = processor.getContext().getString(R.string.format_confirmDelete)
         val data = MessageDialogFragment.Companion.MessageData(format.format(entity.name ?: ""))
         data.positiveListener = DialogInterface.OnClickListener { dialog, which ->
             delete(entity)
             dialog.dismiss()
-            processor.showToast(ContextUtils.formatString(com.hiloislay.passmanagerkt.R.string.format_deleted, com.hiloislay.passmanagerkt.R.string.password))
+            processor.showToast(ContextUtils.formatString(R.string.format_deleted, R.string.password))
         }
 
-        data.negativeTitle = processor.getContext().getString(com.hiloislay.passmanagerkt.R.string.cancel)
+        data.negativeTitle = processor.getContext().getString(R.string.cancel)
 
         val messageDialog = MessageDialogFragment.newInstance(data)
         processor.showDialog(messageDialog, "deleteDialog")
@@ -108,8 +109,8 @@ class PasswordListPresenterImpl(private val processor: PasswordListPresenter.Fra
         RepositoryHolder.passwordRepository
                 .deleteById(entity.id)
                 .let {
-                    processor.showToast(ContextUtils.formatString(com.hiloislay.passmanagerkt.R.string.format_deleted, com.hiloislay.passmanagerkt.R.string.password))
-                    com.hiloislay.passmanagerkt.util.Logger.i("パスワードを削除しました。rows:[%d]", it)
+                    processor.showToast(ContextUtils.formatString(R.string.format_deleted, R.string.password))
+                    Logger.i("パスワードを削除しました。rows:[%d]", it)
                 }
 
 

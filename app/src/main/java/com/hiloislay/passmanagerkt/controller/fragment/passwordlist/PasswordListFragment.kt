@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import com.hiloislay.passmanagerkt.R
 import com.hiloislay.passmanagerkt.controller.fragment.BaseFragment
 import com.hiloislay.passmanagerkt.controller.fragment.dialog.ListMenuDialogFragment
 import com.hiloislay.passmanagerkt.db.realm.entity.Password
@@ -30,7 +31,7 @@ class PasswordListFragment : BaseFragment(), PasswordListPresenter.FragmentProce
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val view = inflater?.inflate(com.hiloislay.passmanagerkt.R.layout.fragment_password_list, null)
+        val view = inflater?.inflate(R.layout.fragment_password_list, null)
         return view!!
     }
 

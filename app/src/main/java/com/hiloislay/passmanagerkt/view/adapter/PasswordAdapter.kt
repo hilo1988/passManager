@@ -22,7 +22,7 @@ class PasswordAdapter(val context: Context, var results: List<Password>) : BaseA
                 if (convertView != null) {
                     convertView as PasswordAdapterView
                 } else {
-                    View.inflate(context, com.hiloislay.passmanagerkt.R.layout.adapter_password_list, null) as PasswordAdapterView
+                    View.inflate(context, R.layout.adapter_password_list, null) as PasswordAdapterView
                 }
 
         view.bindView(getItem(position) as Password)

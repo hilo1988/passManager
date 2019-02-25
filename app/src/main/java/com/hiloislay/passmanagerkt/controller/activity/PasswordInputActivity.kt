@@ -10,7 +10,7 @@ class PasswordInputActivity : BaseActivity(), PasswordInputFragment.ActivityOper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.hiloislay.passmanagerkt.R.layout.activity_password_input)
+        setContentView(R.layout.activity_password_input)
 
         val inputType = intent.extras.getInt(KEY_INPUT_TYPE)
 
@@ -29,7 +29,7 @@ class PasswordInputActivity : BaseActivity(), PasswordInputFragment.ActivityOper
         }
 
         fragmentManager.beginTransaction()
-                .replace(com.hiloislay.passmanagerkt.R.id.container, f)
+                .replace(R.id.container, f)
                 .commit()
     }
 

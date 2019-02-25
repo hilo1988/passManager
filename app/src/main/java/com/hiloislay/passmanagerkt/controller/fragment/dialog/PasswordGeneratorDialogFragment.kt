@@ -24,8 +24,8 @@ class PasswordGeneratorDialogFragment : DialogFragment() {
     private var onPasswordGeneratedListener: ((String) -> Unit)? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val view = View.inflate(context, com.hiloislay.passmanagerkt.R.layout.dialog_password_generator, null)
-        com.hiloislay.passmanagerkt.util.Logger.d()
+        val view = View.inflate(context, R.layout.dialog_password_generator, null)
+        Logger.d()
         val builder = AlertDialog.Builder(context)
         builder.setView(view!!)
 
@@ -39,11 +39,11 @@ class PasswordGeneratorDialogFragment : DialogFragment() {
 
 
     private fun generatePassword() {
-        com.hiloislay.passmanagerkt.util.Logger.d()
+        Logger.d()
         val lengthStr = mView.numberSizeText.text.toString()
         if (!NumberUtils.isDigits(lengthStr)) {
             Toast.makeText(context,
-                    ContextUtils.formatString(com.hiloislay.passmanagerkt.R.string.error_required, com.hiloislay.passmanagerkt.R.string.numberSize),
+                    ContextUtils.formatString(R.string.error_required, R.string.numberSize),
                     Toast.LENGTH_SHORT)
                     .show()
             return
@@ -52,7 +52,7 @@ class PasswordGeneratorDialogFragment : DialogFragment() {
         val length = lengthStr.toInt()
         if (length <= 0 || length > 99) {
             Toast.makeText(context,
-                    com.hiloislay.passmanagerkt.R.string.error_numberSizeLength,
+                    R.string.error_numberSizeLength,
                     Toast.LENGTH_SHORT)
                     .show()
             return
@@ -63,7 +63,7 @@ class PasswordGeneratorDialogFragment : DialogFragment() {
                 && !mView.numberLetterCheckBox.isChecked
                 && !mView.symbolLetterCheckBox.isChecked) {
             Toast.makeText(context,
-                    ContextUtils.formatString(com.hiloislay.passmanagerkt.R.string.error_noSelected, com.hiloislay.passmanagerkt.R.string.letterType),
+                    ContextUtils.formatString(R.string.error_noSelected, R.string.letterType),
                     Toast.LENGTH_SHORT)
                     .show()
             return
@@ -74,7 +74,7 @@ class PasswordGeneratorDialogFragment : DialogFragment() {
                 mView.numberLetterCheckBox.isChecked,
                 mView.symbolLetterCheckBox.isChecked)
 
-        com.hiloislay.passmanagerkt.util.Logger.d("generated passowrd:[%s]", password)
+        Logger.d("generated passowrd:[%s]", password)
 
         onPasswordGeneratedListener?.let { it(password) }
         dismiss()

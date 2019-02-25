@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.hiloislay.passmanagerkt.R
 import com.hiloislay.passmanagerkt.presenter.AppPasswordPresenter
 import com.hiloislay.passmanagerkt.presenter.PresenterFactory
 import kotlinx.android.synthetic.main.fragment_app_password.*
@@ -17,7 +18,7 @@ class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentP
     private val presenter = PresenterFactory.getAppPasswordPresenter(this)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val v = inflater?.inflate(com.hiloislay.passmanagerkt.R.layout.fragment_app_password, null)
+        val v = inflater?.inflate(R.layout.fragment_app_password, null)
 
 
         return v!!
@@ -31,22 +32,22 @@ class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentP
                     passwordConfEdit.text.toString())
         }
 
-        myToolbar.setTitle(com.hiloislay.passmanagerkt.R.string.app_password_registration)
+        myToolbar.setTitle(R.string.app_password_registration)
         activity.setActionBar(myToolbar)
         fingerprintButton.visibility = View.GONE
         registerPasswordText.visibility = View.VISIBLE
 
-        submitButton.setText(com.hiloislay.passmanagerkt.R.string.submit)
+        submitButton.setText(R.string.submit)
 
     }
 
     override fun onPasswordCreated() {
-        Toast.makeText(context, com.hiloislay.passmanagerkt.R.string.app_password_is_registered, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, R.string.app_password_is_registered, Toast.LENGTH_SHORT).show()
         operator?.showLogin()
     }
 
     override fun onPasswordCreateFailure() {
-        Toast.makeText(context, com.hiloislay.passmanagerkt.R.string.error_passwordCreateFailed, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, R.string.error_passwordCreateFailed, Toast.LENGTH_SHORT).show()
     }
 
     override fun showError(msg: String) {

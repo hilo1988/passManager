@@ -6,6 +6,7 @@ import android.app.DialogFragment
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
+import com.hiloislay.passmanagerkt.R
 import com.hiloislay.passmanagerkt.valueobject.MenuData
 import com.hiloislay.passmanagerkt.view.adapter.MenuAdapter
 import kotlinx.android.synthetic.main.dialog_list_menu.view.*
@@ -21,7 +22,7 @@ open class ListMenuDialogFragment : DialogFragment() {
 
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val view = View.inflate(context, com.hiloislay.passmanagerkt.R.layout.dialog_list_menu, null)
+        val view = View.inflate(context, R.layout.dialog_list_menu, null)
         val builder = AlertDialog.Builder(context);
         builder.setView(view)
 

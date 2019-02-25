@@ -13,8 +13,8 @@ class LoginPresenterImpl(private val processor: LoginPresenter.FragmentProcessor
     override fun login(password: String) {
 
         if (password.isEmpty()) {
-            processor.showError(ContextUtils.formatString(com.hiloislay.passmanagerkt.R.string.error_required,
-                    com.hiloislay.passmanagerkt.R.string.password))
+            processor.showError(ContextUtils.formatString(R.string.error_required,
+                    R.string.password))
             return
         }
 

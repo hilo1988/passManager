@@ -54,11 +54,11 @@ abstract class BasePasswordPresenterImpl : BasePresenterImpl(), BasePasswordPres
     fun validate(): String? {
         val processor = getProcessor()
         if (processor.getLoginId().isNullOrBlank()) {
-            return ContextUtils.formatString(com.hiloislay.passmanagerkt.R.string.error_required, com.hiloislay.passmanagerkt.R.string.labelName)
+            return ContextUtils.formatString(R.string.error_required, R.string.labelName)
         }
 
         if (processor.getPassword1().isNullOrBlank()) {
-            return ContextUtils.formatString(com.hiloislay.passmanagerkt.R.string.error_required, com.hiloislay.passmanagerkt.R.string.password)
+            return ContextUtils.formatString(R.string.error_required, R.string.password)
         }
 
         return null

@@ -18,7 +18,7 @@ class InputPasswordPresenterImpl(val processor: InputPasswordPresenter.FragmentP
     }
 
     override fun save() {
-        com.hiloislay.passmanagerkt.util.Logger.d()
+        Logger.d()
         val validateMessage = validate()
         if (!validateMessage.isNullOrBlank()) {
             processor.showToast(validateMessage!!)

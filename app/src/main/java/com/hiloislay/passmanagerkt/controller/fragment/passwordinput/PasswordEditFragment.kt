@@ -22,7 +22,7 @@ class PasswordEditFragment : BaseInputPasswordFragment(), EditPasswordPresenter.
     private val presenter: EditPasswordPresenter = EditPasswordPresenterImpl(this)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val view = inflater?.inflate(com.hiloislay.passmanagerkt.R.layout.fragment_password_input, null)
+        val view = inflater?.inflate(R.layout.fragment_password_input, null)
         return view!!
     }
 

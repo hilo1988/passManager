@@ -27,16 +27,16 @@ class AppPasswordPresenterImpl(private val processor: AppPasswordPresenter.Fragm
     private fun validate(password: String, passwordConf: String): Boolean {
         if (password.length < PASSWORD_LENGTH) {
             processor.showError(
-                    ContextUtils.formatString(com.hiloislay.passmanagerkt.R.string.error_required, com.hiloislay.passmanagerkt.R.string.password))
+                    ContextUtils.formatString(R.string.error_required, R.string.password))
             return false
         }
 
         if (password != passwordConf) {
             processor.showError(
                     ContextUtils.formatString(
-                            com.hiloislay.passmanagerkt.R.string.error_notEquals,
-                            com.hiloislay.passmanagerkt.R.string.password,
-                            com.hiloislay.passmanagerkt.R.string.passwordConf))
+                            R.string.error_notEquals,
+                            R.string.password,
+                            R.string.passwordConf))
             return false
         }
 

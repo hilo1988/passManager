@@ -17,16 +17,16 @@ class EditPasswordPresenterImpl(val processor: EditPasswordPresenter.FragmentPro
     }
 
     override fun selectData(id: Long) {
-        com.hiloislay.passmanagerkt.util.Logger.d("%s", id)
+        Logger.d("%s", id)
         val data = RepositoryHolder.passwordRepository.findById(id)
-        com.hiloislay.passmanagerkt.util.Logger.d("%s", data)
+        Logger.d("%s", data)
         data?.let { processor.setInputData(it) }
 
 
     }
 
     override fun save() {
-        com.hiloislay.passmanagerkt.util.Logger.d()
+        Logger.d()
         val validateMessage = validate()
         if (!validateMessage.isNullOrBlank()) {
             processor.showToast(validateMessage!!)

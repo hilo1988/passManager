@@ -33,9 +33,9 @@ class FingerprintUiHelper
 
     private val mResetErrorTextRunnable = Runnable {
         mErrorTextView.setTextColor(
-                mErrorTextView.resources.getColor(com.hiloislay.passmanagerkt.R.color.hint_color, null))
-        mErrorTextView.text = mErrorTextView.resources.getString(com.hiloislay.passmanagerkt.R.string.fingerprint_hint)
-        mIcon.setImageResource(com.hiloislay.passmanagerkt.R.mipmap.ic_fp_40px)
+                mErrorTextView.resources.getColor(R.color.hint_color, null))
+        mErrorTextView.text = mErrorTextView.resources.getString(R.string.fingerprint_hint)
+        mIcon.setImageResource(R.mipmap.ic_fp_40px)
     }
 
     fun startListening(cryptoObject: FingerprintManager.CryptoObject?) {
@@ -47,7 +47,7 @@ class FingerprintUiHelper
 
         mFingerprintManager
                 .authenticate(cryptoObject, mCancellationSignal, 0 /* flags */, this, null)
-        mIcon.setImageResource(com.hiloislay.passmanagerkt.R.mipmap.ic_fp_40px)
+        mIcon.setImageResource(R.mipmap.ic_fp_40px)
     }
 
     fun stopListening() {
@@ -59,7 +59,7 @@ class FingerprintUiHelper
     }
 
     override fun onAuthenticationError(errMsgId: Int, errString: CharSequence) {
-        com.hiloislay.passmanagerkt.util.Logger.e("errorMsgId:[%d] msg:[%s]", errMsgId, errString)
+        Logger.e("errorMsgId:[%d] msg:[%s]", errMsgId, errString)
         if (!mSelfCancelled) {
             showError(errString)
             mIcon.postDelayed({ mCallback.onError() },
@@ -68,31 +68,31 @@ class FingerprintUiHelper
     }
 
     override fun onAuthenticationHelp(helpMsgId: Int, helpString: CharSequence) {
-        com.hiloislay.passmanagerkt.util.Logger.v("helpMsgId:[%d] helpString:[%s]", helpMsgId, helpString)
+        Logger.v("helpMsgId:[%d] helpString:[%s]", helpMsgId, helpString)
         showError(helpString)
     }
 
     override fun onAuthenticationFailed() {
-        com.hiloislay.passmanagerkt.util.Logger.e()
+        Logger.e()
         showError(mIcon.resources.getString(
-                com.hiloislay.passmanagerkt.R.string.fingerprint_not_recognized))
+                R.string.fingerprint_not_recognized))
     }
 
     override fun onAuthenticationSucceeded(result: FingerprintManager.AuthenticationResult) {
-        com.hiloislay.passmanagerkt.util.Logger.v("result:[%s]", result)
+        Logger.v("result:[%s]", result)
         mErrorTextView.removeCallbacks(mResetErrorTextRunnable)
-        mIcon.setImageResource(com.hiloislay.passmanagerkt.R.drawable.ic_fingerprint_success)
+        mIcon.setImageResource(R.drawable.ic_fingerprint_success)
         mErrorTextView.setTextColor(
-                mErrorTextView.resources.getColor(com.hiloislay.passmanagerkt.R.color.success_color, null))
-        mErrorTextView.text = mErrorTextView.resources.getString(com.hiloislay.passmanagerkt.R.string.fingerprint_success)
+                mErrorTextView.resources.getColor(R.color.success_color, null))
+        mErrorTextView.text = mErrorTextView.resources.getString(R.string.fingerprint_success)
         mIcon.postDelayed({ mCallback.onAuthenticated() }, SUCCESS_DELAY_MILLIS)
     }
 
     private fun showError(error: CharSequence) {
-        mIcon.setImageResource(com.hiloislay.passmanagerkt.R.drawable.ic_fingerprint_error)
+        mIcon.setImageResource(R.drawable.ic_fingerprint_error)
         mErrorTextView.text = error
         mErrorTextView.setTextColor(
-                mErrorTextView.resources.getColor(com.hiloislay.passmanagerkt.R.color.warning_color, null))
+                mErrorTextView.resources.getColor(R.color.warning_color, null))
         mErrorTextView.removeCallbacks(mResetErrorTextRunnable)
         mErrorTextView.postDelayed(mResetErrorTextRunnable, ERROR_TIMEOUT_MILLIS)
     }

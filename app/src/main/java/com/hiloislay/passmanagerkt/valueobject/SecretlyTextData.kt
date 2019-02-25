@@ -11,13 +11,13 @@ class SecretlyTextData(private val textView: TextView,
 
 
     init {
-        textView.text = PMApplication.getContext().getString(com.hiloislay.passmanagerkt.R.string.hiddenMarks)
+        textView.text = PMApplication.getContext().getString(R.string.hiddenMarks)
     }
 
 
     fun toggleHidden(): Boolean {
         textView.text = if (isHidden) text
-        else PMApplication.getContext().getString(com.hiloislay.passmanagerkt.R.string.hiddenMarks)
+        else PMApplication.getContext().getString(R.string.hiddenMarks)
 
         isHidden = !isHidden
         return isHidden

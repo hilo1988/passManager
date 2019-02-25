@@ -33,11 +33,11 @@ class PasswordUseCaseImpl : PasswordUseCase {
         Realm.getDefaultInstance()
                 .executeTransaction { realm ->
                     val id = accessor.getPrimaryId()
-                    com.hiloislay.passmanagerkt.util.Logger.w("primaryId:%s", id)
+                    Logger.w("primaryId:%s", id)
                     id?.let { pId ->
-                        com.hiloislay.passmanagerkt.util.Logger.w("piD:%s", pId)
+                        Logger.w("piD:%s", pId)
                         RepositoryHolder.passwordRepository.findById(pId)?.let { entity ->
-                            com.hiloislay.passmanagerkt.util.Logger.w("entity:%s", entity)
+                            Logger.w("entity:%s", entity)
                             val cryptor = Cryptor.getInstance()
                             entity.name = accessor.getLabelName() ?: ""
                             entity.loginId = accessor.getLoginId() ?: ""

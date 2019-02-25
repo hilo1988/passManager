@@ -5,6 +5,7 @@ import android.os.Build
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyPermanentlyInvalidatedException
 import android.security.keystore.KeyProperties
+import com.hiloislay.passmanagerkt.util.Logger
 import java.io.IOException
 import java.security.*
 import java.security.cert.CertificateException
@@ -86,26 +87,26 @@ private constructor() {
          * KeyStoreHolderの初期化を行います。
          */
         fun init() {
-            com.hiloislay.passmanagerkt.util.Logger.d()
+            Logger.d()
             try {
                 holder = KeyStoreHolder()
             } catch (e: KeyStoreException) {
-                com.hiloislay.passmanagerkt.util.Logger.e("KeyStoreHolderインスタンスの生成に失敗", e)
+                Logger.e("KeyStoreHolderインスタンスの生成に失敗", e)
                 return
             } catch (e: NoSuchAlgorithmException) {
-                com.hiloislay.passmanagerkt.util.Logger.e("KeyStoreHolderインスタンスの生成に失敗", e)
+                Logger.e("KeyStoreHolderインスタンスの生成に失敗", e)
                 return
             } catch (e: NoSuchProviderException) {
-                com.hiloislay.passmanagerkt.util.Logger.e("KeyStoreHolderインスタンスの生成に失敗", e)
+                Logger.e("KeyStoreHolderインスタンスの生成に失敗", e)
                 return
             }
 
             try {
                 holder!!.createCipher()
             } catch (e: NoSuchAlgorithmException) {
-                com.hiloislay.passmanagerkt.util.Logger.e("cipherの生成に失敗", e)
+                Logger.e("cipherの生成に失敗", e)
             } catch (e: NoSuchPaddingException) {
-                com.hiloislay.passmanagerkt.util.Logger.e("cipherの生成に失敗", e)
+                Logger.e("cipherの生成に失敗", e)
             }
 
         }

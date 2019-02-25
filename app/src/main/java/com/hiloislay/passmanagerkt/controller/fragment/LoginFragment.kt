@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.hiloislay.passmanagerkt.R
 import com.hiloislay.passmanagerkt.controller.fragment.dialog.FingerprintAuthenticationDialog
 import com.hiloislay.passmanagerkt.presenter.LoginPresenter
 import com.hiloislay.passmanagerkt.presenter.PresenterFactory
@@ -22,7 +23,7 @@ class LoginFragment : BaseFragment(), LoginPresenter.FragmentProcessor {
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val view = inflater?.inflate(com.hiloislay.passmanagerkt.R.layout.fragment_app_password, null)
+        val view = inflater?.inflate(R.layout.fragment_app_password, null)
         return view!!
     }
 
@@ -31,7 +32,7 @@ class LoginFragment : BaseFragment(), LoginPresenter.FragmentProcessor {
         submitButton.setOnClickListener { onClickSubmitButton() }
         passwordConfEdit.visibility = View.GONE
 
-        myToolbar.setTitle(com.hiloislay.passmanagerkt.R.string.login)
+        myToolbar.setTitle(R.string.login)
         activity.setActionBar(myToolbar)
 
         fingerprintButton.setOnClickListener { showFingerPrintDialog() }
@@ -65,7 +66,7 @@ class LoginFragment : BaseFragment(), LoginPresenter.FragmentProcessor {
     }
 
     override fun onLoginFailed() {
-        showError(getString(com.hiloislay.passmanagerkt.R.string.error_cannot_login))
+        showError(getString(R.string.error_cannot_login))
     }
 
     override fun showError(error: String) {
