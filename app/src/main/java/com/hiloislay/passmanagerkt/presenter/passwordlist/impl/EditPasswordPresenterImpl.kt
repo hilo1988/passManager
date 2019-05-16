@@ -6,7 +6,7 @@ import com.hiloislay.passmanagerkt.model.usecase.impl.PasswordUseCaseImpl
 import com.hiloislay.passmanagerkt.presenter.BasePasswordPresenter
 import com.hiloislay.passmanagerkt.presenter.EditPasswordPresenter
 import com.hiloislay.passmanagerkt.presenter.impl.BasePasswordPresenterImpl
-import com.hiloislay.passmanagerkt.util.Logger
+import timber.log.Timber
 
 class EditPasswordPresenterImpl(val processor: EditPasswordPresenter.FragmentProcessor) : BasePasswordPresenterImpl(), EditPasswordPresenter {
 
@@ -17,16 +17,16 @@ class EditPasswordPresenterImpl(val processor: EditPasswordPresenter.FragmentPro
     }
 
     override fun selectData(id: Long) {
-        Logger.d("%s", id)
+        Timber.d("%s", id)
         val data = RepositoryHolder.passwordRepository.findById(id)
-        Logger.d("%s", data)
+        Timber.d("%s", data)
         data?.let { processor.setInputData(it) }
 
 
     }
 
     override fun save() {
-        Logger.d()
+        Timber.d("")
         val validateMessage = validate()
         if (!validateMessage.isNullOrBlank()) {
             processor.showToast(validateMessage!!)

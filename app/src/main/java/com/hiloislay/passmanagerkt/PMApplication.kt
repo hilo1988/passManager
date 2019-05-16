@@ -5,6 +5,7 @@ import android.content.Context
 import com.yoidukigembu.crypt.aes.AesCryptor
 import io.realm.Realm
 import io.realm.RealmConfiguration
+import timber.log.Timber
 
 
 class PMApplication : Application() {
@@ -22,6 +23,7 @@ class PMApplication : Application() {
 //        BaseRepositoryImpl.database.relationOfPassword().createQueryObservable<Password_Selector>()
 //                .subscribe { SubjectHolder.onPasswordChangedSubject.onNext(it) }
 
+        Timber.plant(Timber.DebugTree())
         initRealm()
 
     }

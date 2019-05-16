@@ -3,10 +3,10 @@ package com.hiloislay.passmanagerkt.model.usecase.impl
 import android.content.Context
 import com.hiloislay.passmanagerkt.PMApplication
 import com.hiloislay.passmanagerkt.model.usecase.AppPasswordUseCase
-import com.hiloislay.passmanagerkt.util.Logger
 import org.apache.commons.codec.binary.Hex
 import org.apache.commons.codec.digest.DigestUtils
 import org.apache.commons.lang3.RandomStringUtils
+import timber.log.Timber
 import java.io.IOException
 import java.nio.charset.Charset
 
@@ -26,9 +26,9 @@ class AppPasswordUseCaseImpl : AppPasswordUseCase {
                     .writer(Charset.defaultCharset())
             writer.write(salt)
             writer.flush()
-            Logger.d("アプリパスワードの保存に成功しました。")
+            Timber.d("アプリパスワードの保存に成功しました。")
         } catch (e: IOException) {
-            Logger.e(e, "アプリパスワードの保存に失敗しました")
+            Timber.e(e, "アプリパスワードの保存に失敗しました")
             return false
         }
 
@@ -70,7 +70,7 @@ class AppPasswordUseCaseImpl : AppPasswordUseCase {
                 .reader(Charset.defaultCharset())
                 .readText()
 
-        Logger.v("input:[%s] saved:[%s]", inputPass, savedPass)
+        Timber.v("input:[%s] saved:[%s]", inputPass, savedPass)
 
         return inputPass == savedPass
     }

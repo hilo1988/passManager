@@ -5,9 +5,9 @@ import com.hiloislay.passmanagerkt.model.usecase.impl.PasswordUseCaseImpl
 import com.hiloislay.passmanagerkt.presenter.BasePasswordPresenter
 import com.hiloislay.passmanagerkt.presenter.InputPasswordPresenter
 import com.hiloislay.passmanagerkt.presenter.impl.BasePasswordPresenterImpl
-import com.hiloislay.passmanagerkt.util.Logger
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
 class InputPasswordPresenterImpl(val processor: InputPasswordPresenter.FragmentProcessor) : BasePasswordPresenterImpl(), InputPasswordPresenter {
 
@@ -18,7 +18,7 @@ class InputPasswordPresenterImpl(val processor: InputPasswordPresenter.FragmentP
     }
 
     override fun save() {
-        Logger.d()
+        Timber.d("")
         val validateMessage = validate()
         if (!validateMessage.isNullOrBlank()) {
             processor.showToast(validateMessage!!)

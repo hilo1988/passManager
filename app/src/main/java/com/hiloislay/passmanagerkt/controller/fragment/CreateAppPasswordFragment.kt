@@ -13,9 +13,14 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentProcessor {
 
-    private var operator: ActivityOperator? = null
+    var operator: ActivityOperator? = null
 
-    private val presenter = PresenterFactory.getAppPasswordPresenter(this)
+    private var presenter: AppPasswordPresenter? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        presenter = PresenterFactory.getAppPasswordPresenter(this)
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val v = inflater?.inflate(R.layout.fragment_app_password, null)
@@ -27,7 +32,7 @@ class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentP
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         submitButton.setOnClickListener {
-            presenter.createPassword(
+            presenter?.createPassword(
                     password1Edit.text.toString(),
                     passwordConfEdit.text.toString())
         }
@@ -65,11 +70,4 @@ class CreateAppPasswordFragment : BaseFragment(), AppPasswordPresenter.FragmentP
         fun showLogin()
     }
 
-    companion object {
-        fun getInstance(operator: ActivityOperator): CreateAppPasswordFragment {
-            val f = CreateAppPasswordFragment()
-            f.operator = operator
-            return f
-        }
-    }
 }

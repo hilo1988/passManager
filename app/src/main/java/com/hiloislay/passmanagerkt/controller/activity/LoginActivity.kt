@@ -6,7 +6,7 @@ import com.hiloislay.passmanagerkt.R
 import com.hiloislay.passmanagerkt.controller.fragment.CreateAppPasswordFragment
 import com.hiloislay.passmanagerkt.controller.fragment.LoginFragment
 import com.hiloislay.passmanagerkt.model.usecase.impl.AppPasswordUseCaseImpl
-import com.hiloislay.passmanagerkt.util.Logger
+import timber.log.Timber
 
 class LoginActivity : BaseActivity(), LoginFragment.ActivityOperator, CreateAppPasswordFragment.ActivityOperator {
 
@@ -18,9 +18,9 @@ class LoginActivity : BaseActivity(), LoginFragment.ActivityOperator, CreateAppP
 
         val fragment =
                 if (!passwordUseCase.existsAppPassword())
-                    CreateAppPasswordFragment.getInstance(this)
+                    CreateAppPasswordFragment().also { it.operator = this }
                 else
-                    LoginFragment.getInstance(this)
+                    LoginFragment().also { it.operator = this }
 
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
@@ -29,12 +29,12 @@ class LoginActivity : BaseActivity(), LoginFragment.ActivityOperator, CreateAppP
 
     override fun showLogin() {
         fragmentManager.beginTransaction()
-                .replace(R.id.container, LoginFragment.getInstance(this))
+                .replace(R.id.container, LoginFragment().also { it.operator = this })
                 .commit()
     }
 
     override fun onLogin() {
-        Logger.v()
+        Timber.v("")
         startActivity(Intent(this, PasswordListActivity::class.java))
     }
 }

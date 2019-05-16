@@ -4,14 +4,15 @@ import com.hiloislay.passmanagerkt.accessor.PasswordDataAccessor
 import com.hiloislay.passmanagerkt.db.realm.entity.Password
 import com.hiloislay.passmanagerkt.model.holder.RepositoryHolder
 import com.hiloislay.passmanagerkt.model.usecase.PasswordUseCase
-import com.hiloislay.passmanagerkt.util.Logger
 import com.hiloislay.passmanagerkt.valueobject.Cryptor
 import io.reactivex.Single
 import io.realm.Realm
+import io.realm.RealmResults
+import timber.log.Timber
 
 class PasswordUseCaseImpl : PasswordUseCase {
-    override fun createPasswordList() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun selectPasswords() : RealmResults<Password> {
+        return RepositoryHolder.passwordRepository.selectList()
     }
 
 
@@ -33,11 +34,11 @@ class PasswordUseCaseImpl : PasswordUseCase {
         Realm.getDefaultInstance()
                 .executeTransaction { realm ->
                     val id = accessor.getPrimaryId()
-                    Logger.w("primaryId:%s", id)
+                    Timber.w("primaryId:%s", id)
                     id?.let { pId ->
-                        Logger.w("piD:%s", pId)
+                        Timber.w("piD:%s", pId)
                         RepositoryHolder.passwordRepository.findById(pId)?.let { entity ->
-                            Logger.w("entity:%s", entity)
+                            Timber.w("entity:%s", entity)
                             val cryptor = Cryptor.getInstance()
                             entity.name = accessor.getLabelName() ?: ""
                             entity.loginId = accessor.getLoginId() ?: ""

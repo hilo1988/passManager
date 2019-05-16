@@ -2,50 +2,50 @@ package com.hiloislay.passmanagerkt.controller.activity
 
 import android.app.Activity
 import android.os.Bundle
-import com.hiloislay.passmanagerkt.util.Logger
+import timber.log.Timber
 
 /**
  * 基底アクティビティ
  */
-open class BaseActivity : Activity() {
+abstract class BaseActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Logger.v()
+        Timber.v("activity:%s", this)
     }
 
     override fun onStart() {
         super.onStart()
-        Logger.v()
+        Timber.v("activity:%s", this)
     }
 
     override fun onRestart() {
         super.onRestart()
-        Logger.v()
+        Timber.v("activity:%s", this)
     }
 
     override fun onResume() {
         super.onResume()
-        Logger.v()
+        Timber.v("activity:%s", this)
     }
 
     override fun onPause() {
         super.onPause()
-        Logger.v()
+        Timber.v("activity:%s", this)
     }
 
     override fun onStop() {
         super.onStop()
-        Logger.v()
+        Timber.v("activity:%s", this)
     }
 
     override fun finish() {
         super.finish()
-        Logger.v()
+        Timber.v("activity:%s", this)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Logger.v()
+        Timber.v("activity:%s", this)
     }
 }

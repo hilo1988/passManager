@@ -8,10 +8,10 @@ import android.view.View
 import android.widget.Toast
 import com.hiloislay.passmanagerkt.R
 import com.hiloislay.passmanagerkt.util.ContextUtils
-import com.hiloislay.passmanagerkt.util.Logger
 import com.hiloislay.passmanagerkt.util.PasswordStrings
 import kotlinx.android.synthetic.main.dialog_password_generator.view.*
 import org.apache.commons.lang3.math.NumberUtils
+import timber.log.Timber
 
 
 /**
@@ -25,7 +25,7 @@ class PasswordGeneratorDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = View.inflate(context, R.layout.dialog_password_generator, null)
-        Logger.d()
+        Timber.d("")
         val builder = AlertDialog.Builder(context)
         builder.setView(view!!)
 
@@ -39,7 +39,7 @@ class PasswordGeneratorDialogFragment : DialogFragment() {
 
 
     private fun generatePassword() {
-        Logger.d()
+        Timber.d("")
         val lengthStr = mView.numberSizeText.text.toString()
         if (!NumberUtils.isDigits(lengthStr)) {
             Toast.makeText(context,
@@ -74,7 +74,7 @@ class PasswordGeneratorDialogFragment : DialogFragment() {
                 mView.numberLetterCheckBox.isChecked,
                 mView.symbolLetterCheckBox.isChecked)
 
-        Logger.d("generated passowrd:[%s]", password)
+        Timber.d("generated passowrd:[%s]", password)
 
         onPasswordGeneratedListener?.let { it(password) }
         dismiss()

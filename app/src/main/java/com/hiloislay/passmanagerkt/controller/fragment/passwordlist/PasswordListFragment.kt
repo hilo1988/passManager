@@ -1,5 +1,6 @@
 package com.hiloislay.passmanagerkt.controller.fragment.passwordlist
 
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,11 @@ import android.widget.AdapterView
 import com.hiloislay.passmanagerkt.R
 import com.hiloislay.passmanagerkt.controller.fragment.BaseFragment
 import com.hiloislay.passmanagerkt.controller.fragment.dialog.ListMenuDialogFragment
+import com.hiloislay.passmanagerkt.databinding.FragmentPasswordListBinding
 import com.hiloislay.passmanagerkt.db.realm.entity.Password
 import com.hiloislay.passmanagerkt.model.holder.SubjectHolder
+import com.hiloislay.passmanagerkt.model.usecase.PasswordUseCase
+import com.hiloislay.passmanagerkt.model.usecase.impl.PasswordUseCaseImpl
 import com.hiloislay.passmanagerkt.presenter.passwordlist.PasswordListPresenter
 import com.hiloislay.passmanagerkt.presenter.passwordlist.impl.PasswordListPresenterImpl
 import com.hiloislay.passmanagerkt.valueobject.MenuData
@@ -29,10 +33,14 @@ class PasswordListFragment : BaseFragment(), PasswordListPresenter.FragmentProce
     /** アダプタ */
     private var adapter: PasswordAdapter? = null
 
+    private val usecase: PasswordUseCase = PasswordUseCaseImpl()
+
+    private var binding :FragmentPasswordListBinding? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val view = inflater?.inflate(R.layout.fragment_password_list, null)
-        return view!!
+
+        binding = DataBindingUtil.inflate(inflater!!, R.layout.fragment_password_list, null, true)
+        return binding?.root!!
     }
 
 

@@ -11,7 +11,7 @@ import android.os.CancellationSignal
 import android.widget.ImageView
 import android.widget.TextView
 import com.hiloislay.passmanagerkt.R
-import com.hiloislay.passmanagerkt.util.Logger
+import timber.log.Timber
 
 /**
  * Small helper class to manage text/icon around fingerprint authentication UI.
@@ -59,7 +59,7 @@ class FingerprintUiHelper
     }
 
     override fun onAuthenticationError(errMsgId: Int, errString: CharSequence) {
-        Logger.e("errorMsgId:[%d] msg:[%s]", errMsgId, errString)
+        Timber.e("errorMsgId:[%d] msg:[%s]", errMsgId, errString)
         if (!mSelfCancelled) {
             showError(errString)
             mIcon.postDelayed({ mCallback.onError() },
@@ -68,18 +68,18 @@ class FingerprintUiHelper
     }
 
     override fun onAuthenticationHelp(helpMsgId: Int, helpString: CharSequence) {
-        Logger.v("helpMsgId:[%d] helpString:[%s]", helpMsgId, helpString)
+        Timber.v("helpMsgId:[%d] helpString:[%s]", helpMsgId, helpString)
         showError(helpString)
     }
 
     override fun onAuthenticationFailed() {
-        Logger.e()
+        Timber.e("")
         showError(mIcon.resources.getString(
                 R.string.fingerprint_not_recognized))
     }
 
     override fun onAuthenticationSucceeded(result: FingerprintManager.AuthenticationResult) {
-        Logger.v("result:[%s]", result)
+        Timber.v("result:[%s]", result)
         mErrorTextView.removeCallbacks(mResetErrorTextRunnable)
         mIcon.setImageResource(R.drawable.ic_fingerprint_success)
         mErrorTextView.setTextColor(

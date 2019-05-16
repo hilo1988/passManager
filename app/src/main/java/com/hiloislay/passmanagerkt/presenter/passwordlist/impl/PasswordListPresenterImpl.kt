@@ -9,9 +9,9 @@ import com.hiloislay.passmanagerkt.enums.PasswordMenu
 import com.hiloislay.passmanagerkt.model.holder.RepositoryHolder
 import com.hiloislay.passmanagerkt.presenter.passwordlist.PasswordListPresenter
 import com.hiloislay.passmanagerkt.util.ContextUtils
-import com.hiloislay.passmanagerkt.util.Logger
 import com.hiloislay.passmanagerkt.valueobject.Cryptor
 import io.realm.RealmResults
+import timber.log.Timber
 
 class PasswordListPresenterImpl(private val processor: PasswordListPresenter.FragmentProcessor) : PasswordListPresenter {
 
@@ -25,13 +25,13 @@ class PasswordListPresenterImpl(private val processor: PasswordListPresenter.Fra
     override fun selectPasswordList() {
 
         passwordList = RepositoryHolder.passwordRepository.selectList()
-        passwordList?.addChangeListener { a -> Logger.w("passwordListChanged"); processor.showPasswordList(a.toList()) }
+        passwordList?.addChangeListener { a -> Timber.w("passwordListChanged"); processor.showPasswordList(a.toList()) }
         processor.showPasswordList(passwordList!!.toList())
 
     }
 
     override fun onListItemClicked(id: Long) {
-        Logger.d("id: %d", id)
+        Timber.d("id: %d", id)
 
 
         RepositoryHolder.passwordRepository
@@ -110,7 +110,7 @@ class PasswordListPresenterImpl(private val processor: PasswordListPresenter.Fra
                 .deleteById(entity.id)
                 .let {
                     processor.showToast(ContextUtils.formatString(R.string.format_deleted, R.string.password))
-                    Logger.i("パスワードを削除しました。rows:[%d]", it)
+                    Timber.i("パスワードを削除しました。rows:[%d]", it)
                 }
 
 

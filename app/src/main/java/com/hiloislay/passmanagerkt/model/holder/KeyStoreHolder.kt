@@ -5,7 +5,7 @@ import android.os.Build
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyPermanentlyInvalidatedException
 import android.security.keystore.KeyProperties
-import com.hiloislay.passmanagerkt.util.Logger
+import timber.log.Timber
 import java.io.IOException
 import java.security.*
 import java.security.cert.CertificateException
@@ -87,26 +87,26 @@ private constructor() {
          * KeyStoreHolderの初期化を行います。
          */
         fun init() {
-            Logger.d()
+            Timber.d("")
             try {
                 holder = KeyStoreHolder()
             } catch (e: KeyStoreException) {
-                Logger.e("KeyStoreHolderインスタンスの生成に失敗", e)
+                Timber.e("KeyStoreHolderインスタンスの生成に失敗", e)
                 return
             } catch (e: NoSuchAlgorithmException) {
-                Logger.e("KeyStoreHolderインスタンスの生成に失敗", e)
+                Timber.e("KeyStoreHolderインスタンスの生成に失敗", e)
                 return
             } catch (e: NoSuchProviderException) {
-                Logger.e("KeyStoreHolderインスタンスの生成に失敗", e)
+                Timber.e("KeyStoreHolderインスタンスの生成に失敗", e)
                 return
             }
 
             try {
                 holder!!.createCipher()
             } catch (e: NoSuchAlgorithmException) {
-                Logger.e("cipherの生成に失敗", e)
+                Timber.e("cipherの生成に失敗", e)
             } catch (e: NoSuchPaddingException) {
-                Logger.e("cipherの生成に失敗", e)
+                Timber.e("cipherの生成に失敗", e)
             }
 
         }
