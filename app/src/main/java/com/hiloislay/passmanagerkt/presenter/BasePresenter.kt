@@ -1,7 +1,7 @@
 package com.hiloislay.passmanagerkt.presenter
 
-import android.app.DialogFragment
 import android.content.Context
+import android.support.v4.app.DialogFragment
 import io.reactivex.disposables.CompositeDisposable
 
 /**
@@ -31,7 +31,7 @@ interface BasePresenter {
         /**
          * コンテキスト取得
          */
-        fun getContext(): Context
+        fun getContext(): Context?
 
         fun getDisposable(): CompositeDisposable?
     }

@@ -17,6 +17,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -29,6 +31,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -52,6 +58,9 @@ dependencies {
     // https://mvnrepository.com/artifact/io.reactivex/rxkotlin
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'io.reactivex.rxjava2:rxjava:2.x.y'
+    // https://mvnrepository.com/artifact/com.android.support/recyclerview-v7
+    implementation group: 'com.android.support', name: 'recyclerview-v7', version: '27.1.1'
+
 
     implementation 'com.android.support:design:27.1.1'
 

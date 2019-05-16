@@ -1,5 +1,6 @@
 package com.hiloislay.passmanagerkt.controller.fragment.passwordlist
 
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,32 +9,45 @@ import android.widget.AdapterView
 import com.hiloislay.passmanagerkt.R
 import com.hiloislay.passmanagerkt.controller.fragment.BaseFragment
 import com.hiloislay.passmanagerkt.controller.fragment.dialog.ListMenuDialogFragment
+import com.hiloislay.passmanagerkt.databinding.FragmentPasswordListBinding
 import com.hiloislay.passmanagerkt.db.realm.entity.Password
 import com.hiloislay.passmanagerkt.model.holder.SubjectHolder
 import com.hiloislay.passmanagerkt.presenter.passwordlist.PasswordListPresenter
 import com.hiloislay.passmanagerkt.presenter.passwordlist.impl.PasswordListPresenterImpl
+import com.hiloislay.passmanagerkt.util.ContextUtils
 import com.hiloislay.passmanagerkt.valueobject.MenuData
 import com.hiloislay.passmanagerkt.view.adapter.PasswordAdapter
+import com.hiloislay.passmanagerkt.view.adapter.PasswordRecyclerAdapter
+import com.hiloislay.passmanagerkt.viewmodel.PasswordListViewModel
+import io.realm.RealmList
 import kotlinx.android.synthetic.main.fragment_password_list.*
 
 /**
  * パスワード一覧フラグメント
  */
-class PasswordListFragment : BaseFragment(), PasswordListPresenter.FragmentProcessor {
+class PasswordListFragment : BaseFragment() {
 
     lateinit var operator: ActivityOperator
 
-    /** プレゼンタ */
-    lateinit var presenter: PasswordListPresenter
+    lateinit var binding:FragmentPasswordListBinding
 
     /** アダプタ */
     private var adapter: PasswordAdapter? = null
 
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val view = inflater?.inflate(R.layout.fragment_password_list, null)
-        return view!!
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_password_list, null, false)
+        val adapter = PasswordRecyclerAdapter(context!!, RealmList())
+        binding.viewModel = PasswordListViewModel(this, adapter)
+        adapter.onClickListener = {ContextUtils.copyToClipBoard(it?.name)}
+        PasswordRecyclerAdapter(context!!, RealmList()).let {
+            binding.viewModel = PasswordListViewModel(this, it)
+            it.onClickListener =
+        }
+
+        return binding.root
     }
+
 
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
@@ -120,6 +134,10 @@ class PasswordListFragment : BaseFragment(), PasswordListPresenter.FragmentProce
          * 詳細フラグメントの表示
          */
         fun showDetailFragment(entity: Password)
+    }
+
+    class Handler {
+
     }
 
 

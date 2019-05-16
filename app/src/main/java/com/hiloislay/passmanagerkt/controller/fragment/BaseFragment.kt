@@ -1,11 +1,11 @@
 package com.hiloislay.passmanagerkt.controller.fragment
 
-import android.app.DialogFragment
-import android.app.Fragment
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.support.v4.app.DialogFragment
+import android.support.v4.app.Fragment
 import android.view.ContextMenu
 import android.view.Menu
 import android.view.View
@@ -17,7 +17,7 @@ import io.reactivex.disposables.CompositeDisposable
 /**
  * 基底フラグメント
  */
-open class BaseFragment : Fragment(), BasePresenter.BaseFragmentProcessor {
+abstract class BaseFragment : Fragment(), BasePresenter.BaseFragmentProcessor {
 
     var cDisposable: CompositeDisposable? = null
 
